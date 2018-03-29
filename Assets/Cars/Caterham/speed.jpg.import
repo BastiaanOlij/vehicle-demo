@@ -7,10 +7,7 @@ path="res://.import/speed.jpg-b1381c5e310076fabf3500c403f5f031.stex"
 [deps]
 
 source_file="res://Assets/Cars/Caterham/speed.jpg"
-source_md5="747293fb7f0f85a39bc6632c8c8cd463"
-
 dest_files=[ "res://.import/speed.jpg-b1381c5e310076fabf3500c403f5f031.stex" ]
-dest_md5="c0651a90af9404e76c99511f20bfb7cc"
 
 [params]
 

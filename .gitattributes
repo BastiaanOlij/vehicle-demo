@@ -5,3 +5,4 @@
 *.tres eol=lf
 *.import eol=lf
 *.materials eol=lf
+*.gltf eol=lf

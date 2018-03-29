@@ -8,10 +8,7 @@ path.etc2="res://.import/gas tank.jpg-d4a4317dca408b18c3a043a348cded5b.etc2.stex
 [deps]
 
 source_file="res://Assets/Cars/Caterham/gas tank.jpg"
-source_md5="98bfd0981a09b1e1e8293326e0308620"
-
 dest_files=[ "res://.import/gas tank.jpg-d4a4317dca408b18c3a043a348cded5b.s3tc.stex", "res://.import/gas tank.jpg-d4a4317dca408b18c3a043a348cded5b.etc2.stex" ]
-dest_md5="1a51a4cb095a172b0474e33aa489b2ce"
 
 [params]
 

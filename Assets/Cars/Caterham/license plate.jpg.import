@@ -8,10 +8,7 @@ path.etc2="res://.import/license plate.jpg-c241fdcd2ac3c796dc2ce5b8bd2c2172.etc2
 [deps]
 
 source_file="res://Assets/Cars/Caterham/license plate.jpg"
-source_md5="1742dcae9ab96f9f9d20d7955c689f67"
-
 dest_files=[ "res://.import/license plate.jpg-c241fdcd2ac3c796dc2ce5b8bd2c2172.s3tc.stex", "res://.import/license plate.jpg-c241fdcd2ac3c796dc2ce5b8bd2c2172.etc2.stex" ]
-dest_md5="332f21c2732f5cf62dd8aee5d2a5b3b7"
 
 [params]
 

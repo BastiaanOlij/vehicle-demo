@@ -8,10 +8,7 @@ path.etc2="res://.import/Finishes.Laminate.CarbonFiber.jpg-37d4d11bebadcb4ddeca8
 [deps]
 
 source_file="res://Assets/Cars/Caterham/Finishes.Laminate.CarbonFiber.jpg"
-source_md5="357db3c5f3fe52498d4f5a0c948923a3"
-
 dest_files=[ "res://.import/Finishes.Laminate.CarbonFiber.jpg-37d4d11bebadcb4ddeca8f6e6d8f9e0f.s3tc.stex", "res://.import/Finishes.Laminate.CarbonFiber.jpg-37d4d11bebadcb4ddeca8f6e6d8f9e0f.etc2.stex" ]
-dest_md5="82d54e70adeef6aab67f6371dc14ad63"
 
 [params]
 

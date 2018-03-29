@@ -7,10 +7,7 @@ path="res://.import/hdrihaven_com_kiara_3_morning.jpg-97bdae80c883342eedbbb5b973
 [deps]
 
 source_file="res://Assets/Textures/hdrihaven_com_kiara_3_morning.jpg"
-source_md5="edbbc5bd3e95acd1764b744c95350bc3"
-
 dest_files=[ "res://.import/hdrihaven_com_kiara_3_morning.jpg-97bdae80c883342eedbbb5b9735d929a.stex" ]
-dest_md5="f84a4a4f78d5f10239703319a2ad6238"
 
 [params]
 

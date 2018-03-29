@@ -25,8 +25,9 @@ brake_mult = 1.0
 
 [node name="right_front" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.856466, 0.37, 1.27463 )
+transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.856, 0.37, 1.275 )
 use_as_steering = true
+wheel_roll_influence = 0.3
 wheel_radius = 0.32
 wheel_rest_length = 0.07
 suspension_travel = 0.05
@@ -43,8 +44,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="right_rear" parent="." index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.931563, 0.37, -1.25496 )
+transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.935, 0.37, -1.255 )
 use_as_traction = true
+wheel_roll_influence = 0.3
 wheel_radius = 0.32
 wheel_rest_length = 0.07
 suspension_travel = 0.05
@@ -61,8 +63,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="left_rear" parent="." index="2"]
 
-transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.933848, 0.37, -1.25496 )
+transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.935, 0.37, -1.255 )
 use_as_traction = true
+wheel_roll_influence = 0.3
 wheel_radius = 0.32
 wheel_rest_length = 0.07
 suspension_travel = 0.05
@@ -79,8 +82,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="left_front" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.853853, 0.37, 1.27463 )
+transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.856, 0.37, 1.275 )
 use_as_steering = true
+wheel_roll_influence = 0.3
 wheel_radius = 0.32
 wheel_rest_length = 0.07
 suspension_travel = 0.05

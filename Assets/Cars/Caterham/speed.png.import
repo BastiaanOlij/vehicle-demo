@@ -8,10 +8,7 @@ path.etc2="res://.import/speed.png-c09ca56f66830fa5a682533185dab743.etc2.stex"
 [deps]
 
 source_file="res://Assets/Cars/Caterham/speed.png"
-source_md5="3cd8a6fb24a83b8b1c9c1bd04dfeb06c"
-
 dest_files=[ "res://.import/speed.png-c09ca56f66830fa5a682533185dab743.s3tc.stex", "res://.import/speed.png-c09ca56f66830fa5a682533185dab743.etc2.stex" ]
-dest_md5="2c0896609fc69dd96af7a88742f8f4b9"
 
 [params]
 

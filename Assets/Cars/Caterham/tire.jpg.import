@@ -8,10 +8,7 @@ path.etc2="res://.import/tire.jpg-104c0ef0c50619f89856d9002337d3e7.etc2.stex"
 [deps]
 
 source_file="res://Assets/Cars/Caterham/tire.jpg"
-source_md5="89469d7c645f1caa426d1dfd1914b95b"
-
 dest_files=[ "res://.import/tire.jpg-104c0ef0c50619f89856d9002337d3e7.s3tc.stex", "res://.import/tire.jpg-104c0ef0c50619f89856d9002337d3e7.etc2.stex" ]
-dest_md5="ec219e17c23d7875ce7cb1d0a097e5c0"
 
 [params]
 
