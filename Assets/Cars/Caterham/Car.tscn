@@ -5,7 +5,7 @@
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 0.561801, 0.451341, 1.36571 )
+extents = Vector3( 0.843584, 0.390793, 1.80802 )
 
 [node name="Car" index="0" instance=ExtResource( 1 )]
 
@@ -105,8 +105,9 @@ visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="11"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631179, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.703536, 0.0132703 )
 shape = SubResource( 1 )
 disabled = false
+_sections_unfolded = [ "Visibility" ]
 
 
