@@ -5,10 +5,9 @@
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 0.561801, 0.451341, 1.36571 )
+extents = Vector3( 0.884512, 0.451341, 1.65455 )
 
 [node name="Car" index="0" instance=ExtResource( 1 )]
-
 mass = 58.6735
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
@@ -24,89 +23,78 @@ joy_brake = 6
 brake_mult = 1.0
 
 [node name="right_front" parent="." index="0"]
-
 transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.856, 0.37, 1.275 )
 use_as_steering = true
 wheel_roll_influence = 0.3
 wheel_radius = 0.32
 wheel_rest_length = 0.07
 suspension_travel = 0.05
-suspension_stiffness = 70.0
+suspension_stiffness = 150.0
 suspension_max_force = 1000.0
-damping_compression = 0.3
+damping_compression = 0.5
 damping_relaxation = 0.5
 _sections_unfolded = [ "Damping", "Suspension", "Transform", "Wheel" ]
 
 [node name="right_front" parent="right_front" index="0"]
-
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="right_rear" parent="." index="1"]
-
 transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.935, 0.37, -1.255 )
 use_as_traction = true
 wheel_roll_influence = 0.3
 wheel_radius = 0.32
 wheel_rest_length = 0.07
 suspension_travel = 0.05
-suspension_stiffness = 70.0
+suspension_stiffness = 150.0
 suspension_max_force = 1000.0
-damping_compression = 0.3
+damping_compression = 0.5
 damping_relaxation = 0.5
 _sections_unfolded = [ "Damping", "Suspension", "Transform", "Wheel" ]
 
 [node name="right_rear" parent="right_rear" index="0"]
-
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="left_rear" parent="." index="2"]
-
 transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.935, 0.37, -1.255 )
 use_as_traction = true
 wheel_roll_influence = 0.3
 wheel_radius = 0.32
 wheel_rest_length = 0.07
 suspension_travel = 0.05
-suspension_stiffness = 70.0
+suspension_stiffness = 150.0
 suspension_max_force = 1000.0
-damping_compression = 0.3
+damping_compression = 0.5
 damping_relaxation = 0.5
 _sections_unfolded = [ "Damping", "Suspension", "Transform", "Wheel" ]
 
 [node name="left_rear" parent="left_rear" index="0"]
-
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="left_front" parent="." index="3"]
-
 transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.856, 0.37, 1.275 )
 use_as_steering = true
 wheel_roll_influence = 0.3
 wheel_radius = 0.32
 wheel_rest_length = 0.07
 suspension_travel = 0.05
-suspension_stiffness = 70.0
+suspension_stiffness = 150.0
 suspension_max_force = 1000.0
-damping_compression = 0.3
+damping_compression = 0.5
 damping_relaxation = 0.5
 _sections_unfolded = [ "Damping", "Suspension", "Transform", "Wheel" ]
 
 [node name="left_front" parent="left_front" index="0"]
-
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Lamp" parent="." index="10"]
-
 visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="11"]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631179, 0 )
 shape = SubResource( 1 )
 disabled = false
-
 

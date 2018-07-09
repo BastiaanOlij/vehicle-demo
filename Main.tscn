@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Textures/TexturesCom_MetalFloorsBare0063_2_seamless_S.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/Cars/Caterham/Car.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Script/Camera.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Textures/TexturesCom_Roads0069_1_seamless_S.jpg" type="Texture" id=4]
 
 [sub_resource type="PlaneShape" id=1]
 
@@ -19,6 +20,8 @@ flags_use_point_size = false
 flags_world_triplanar = false
 flags_fixed_size = false
 flags_albedo_tex_force_srgb = false
+flags_do_not_receive_shadows = false
+flags_ensure_correct_normals = false
 vertex_color_use_as_albedo = false
 vertex_color_is_srgb = false
 params_diffuse_mode = 0
@@ -64,14 +67,47 @@ _sections_unfolded = [ "Albedo", "UV1" ]
 [sub_resource type="PlaneMesh" id=3]
 
 material = SubResource( 2 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
 size = Vector2( 1000, 1000 )
 subdivide_width = 10
 subdivide_depth = 10
 
-[node name="Main" type="Spatial"]
+[sub_resource type="Curve3D" id=4]
+
+bake_interval = 0.2
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0.112286, 0, -8.8523, -13.0582, 0, -0.578531, 4.04679, 0, 10.4365, -3.19484, 0, -10.6495, -25.7658, 0, -32.7732, -9.82511, 3.05176e-05, 1.67865, 7.82684, 0, -1.26921, -13.5382, 0.946259, -53.9205, -9.27357, 0, -1.05381, 9.66233, 0, 1.59475, 16.5055, 1.44971, -55.2437, -5.57153, -0.417969, -9.77881, 4.93529, 0.367676, 11.1659, 47.7455, 4.25781, -34.3573, 6.46703, 0.27356, -10.975, -10.89, -1.92981, 21.153, 54.3213, 1.58044, 4.22866, 11.5745, 1.3941, -7.85857, -7.03838, 0.0300903, 5.58991, 13.7677, 0.778259, 4.89361, -14.3528, 0.154785, -5.90997, 27.2984, 0, 8.53662, 18.2203, 1.24829, 29.3211, 19.3247, 0, 10.0376, -16.0413, 0, -6.19139, 8.37034, 4.19531, 54.4619, 10.2589, 7.62939e-06, -3.5162, -12.737, 7.62939e-06, 3.99148, -39.6793, 1.01244, 50.4643, 2.69788, -7.62939e-06, 10.9375, -1.298, 0, -9.82235, -70.1498, 0.586433, 29.8747, -0.543571, 0, 5.3295, 0.546944, 0, -7.05108, -73.664, 0.852806, -1.19168, -11.7969, 1.52588e-05, 3.6715, 8.59801, 1.52588e-05, -1.82625, -61.092, 1.04198, -26.1916, -6.93944, 0.00012207, -4.05006, 7.39302, 0, 6.12564, -36.3325, 1.14636, -25.3274, 5.0923, 0, -8.06281, -3.60705, 0, 10.3968, -36.28, 0.527588, 3.20657, -6.81566, 0, -3.40783, 8.09359, 0, 3.40782, -29.5996, 0, 27.2898, -2.76887, 0, 8.0936, 4.25979, 0, -9.79751, -6.80976, 0, 23.8819, -0.0315876, 0, 9.75992, 0, 0, 0, -13.1315, 0, 0.101794 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+up_vector_enabled = true
+
+[sub_resource type="Shader" id=5]
+
+code = "shader_type spatial;
+
+uniform sampler2D road_texture;
+
+void fragment() {
+	vec2 road_uv = vec2(UV.y, UV.x);
+	
+	vec4 color = texture(road_texture, road_uv);
+	ALBEDO = color.rgb;
+	METALLIC = 0.0;
+	ROUGHNESS = 0.8;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+
+render_priority = 0
+shader = SubResource( 5 )
+shader_param/road_texture = ExtResource( 4 )
+_sections_unfolded = [ "shader", "shader_param" ]
+
+[node name="Main" type="Spatial" index="0"]
 
 [node name="Ground" type="StaticBody" parent="." index="0"]
-
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -80,14 +116,13 @@ friction = 1.0
 bounce = 0.0
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Ground" index="0"]
-
 shape = SubResource( 1 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground" index="1"]
-
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -102,7 +137,6 @@ skeleton = NodePath("..")
 material/0 = null
 
 [node name="Sun" type="DirectionalLight" parent="." index="1"]
-
 transform = Transform( 0.353542, 0.746557, -0.563615, -0.565523, 0.650531, 0.506945, 0.745112, 0.139511, 0.652185, 0, 4.1408, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
@@ -130,13 +164,15 @@ directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Shadow" ]
 
 [node name="Car" type="Spatial" parent="." index="2"]
+transform = Transform( 0.56717, 0, -0.823601, 0, 1, 0, 0.823601, 0, 0.56717, -13.0877, 0.05164, 0 )
 
 [node name="Car" parent="Car" index="0" instance=ExtResource( 2 )]
-
 transform = Transform( 0.51946, 0, 0.854495, 0, 1, 0, -0.854495, 0, 0.51946, 0, 0, 0 )
+MAX_ENGINE_FORCE = 100.0
+MAX_BRAKE_FORCE = 10.0
+MAX_STEER_ANGLE = 0.45
 
 [node name="Camera" type="Camera" parent="." index="3"]
-
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38516, 3.59774 )
 keep_aspect = 1
 cull_mask = 1048575
@@ -155,4 +191,44 @@ follow_this_path = NodePath("../Car/Car")
 target_distance = 3.0
 target_height = 2.0
 
+[node name="Track" type="Spatial" parent="." index="4"]
+
+[node name="Path" type="Path" parent="Track" index="0"]
+curve = SubResource( 4 )
+
+[node name="Road" type="CSGPolygon" parent="Track/Path" index="0"]
+layers = 1
+operation = 0
+use_collision = false
+snap = 0.001
+invert_faces = true
+polygon = PoolVector2Array( -4, 0, -4, -0.1, 4, -0.1, 4, 0 )
+mode = 2
+path_node = NodePath("..")
+path_interval = 1.0
+path_rotation = 2
+path_local = false
+path_continuous_u = false
+path_joined = true
+smooth_faces = false
+material = SubResource( 6 )
+_sections_unfolded = [ "material" ]
+
+[node name="CollisionShape" type="CSGPolygon" parent="Track/Path" index="1"]
+visible = false
+layers = 1
+operation = 0
+use_collision = true
+snap = 0.001
+invert_faces = true
+polygon = PoolVector2Array( -4, 0, 4, 0, 4, 2, 8, 2, 8, -1, -8, -1, -8, 2, -4, 2 )
+mode = 2
+path_node = NodePath("..")
+path_interval = 1.0
+path_rotation = 2
+path_local = false
+path_continuous_u = false
+path_joined = true
+smooth_faces = false
+material = null
 
