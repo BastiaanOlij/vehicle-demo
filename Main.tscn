@@ -168,9 +168,6 @@ transform = Transform( 0.56717, 0, -0.823601, 0, 1, 0, 0.823601, 0, 0.56717, -13
 
 [node name="Car" parent="Car" index="0" instance=ExtResource( 2 )]
 transform = Transform( 0.51946, 0, 0.854495, 0, 1, 0, -0.854495, 0, 0.51946, 0, 0, 0 )
-MAX_ENGINE_FORCE = 100.0
-MAX_BRAKE_FORCE = 10.0
-MAX_STEER_ANGLE = 0.45
 
 [node name="Camera" type="Camera" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38516, 3.59774 )
