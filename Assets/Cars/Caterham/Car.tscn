@@ -7,7 +7,7 @@
 
 extents = Vector3( 0.884512, 0.451341, 1.65455 )
 
-[node name="Car" instance=ExtResource( 1 )]
+[node name="Car" index="0" instance=ExtResource( 1 )]
 mass = 58.6735
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
@@ -96,7 +96,8 @@ _sections_unfolded = [ "Transform" ]
 visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="11"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631179, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631, 0 )
 shape = SubResource( 1 )
 disabled = false
+_sections_unfolded = [ "Transform" ]
 

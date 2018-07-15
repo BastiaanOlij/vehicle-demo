@@ -3,8 +3,10 @@
 This is a Godot demo project in support of my vehicle body youtube tutorial videos.
 - [Part one](https://youtu.be/B5vE-nNszxA)
 - [Part two](https://youtu.be/Yvy8vQ-5O_w)
+- [Part three](https://youtu.be/DOoVk8WPSAQ)
 
-Part one works best with Godot 3.0.4 or newer. The other parts will require a recent Godot 3.1 build.
+Part one works best with Godot 3.0.4 or newer.
+The other parts will require a recent Godot 3.1 build.
 You will need to download this in order to run this project.
 
 ### License
