@@ -1,18 +1,51 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Materials/terrain_texture.tres" type="Material" id=2]
+[ext_resource path="res://Assets/Textures/TexturesCom_RockGrassy0142_2_seamless_S.jpg" type="Texture" id=2]
 [ext_resource path="res://Assets/Cars/Caterham/Car.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Script/Camera.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Scenes/track-base.tscn" type="PackedScene" id=5]
 
-[sub_resource type="PlaneShape" id=1]
+[sub_resource type="PhysicsMaterial" id=1]
 
+friction = 1.0
+rough = false
+bounce = 0.0
+absorbent = false
+
+[sub_resource type="PlaneShape" id=2]
+
+margin = 0.04
 plane = Plane( 0, 1, 0, 0 )
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="Shader" id=3]
 
-material = ExtResource( 2 )
+code = "shader_type spatial;
+
+uniform sampler2D terrain_texture : hint_albedo;
+varying vec2 terrain_uv;
+
+void vertex() {
+	terrain_uv = (WORLD_MATRIX * vec4(VERTEX, 1.0)).xz * vec2(0.2, 0.2);
+}
+
+void fragment() {
+	vec4 color = texture(terrain_texture, terrain_uv);
+	ALBEDO = color.rgb;
+	METALLIC = 0.0;
+	ROUGHNESS = 0.8;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+
+render_priority = 0
+shader = SubResource( 3 )
+shader_param/terrain_texture = ExtResource( 2 )
+_sections_unfolded = [ "shader", "shader_param" ]
+
+[sub_resource type="PlaneMesh" id=5]
+
+material = SubResource( 4 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 1000, 1000 )
@@ -20,10 +53,74 @@ subdivide_width = 10
 subdivide_depth = 10
 _sections_unfolded = [ "material" ]
 
-[node name="Main" type="Spatial" index="0"]
+[sub_resource type="SpatialMaterial" id=6]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+flags_do_not_receive_shadows = false
+flags_disable_ambient_light = false
+flags_ensure_correct_normals = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_billboard_keep_scale = false
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+albedo_texture = ExtResource( 2 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 1.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 100, 100, 100 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_mode = 0
+_sections_unfolded = [ "Albedo", "UV1" ]
+
+[sub_resource type="PhysicsMaterial" id=7]
+
+friction = 1.0
+rough = false
+bounce = 0.0
+absorbent = false
+
+[node name="Main" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="Ground" type="StaticBody" parent="." index="0"]
+[node name="Ground" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -31,15 +128,16 @@ collision_layer = 1
 collision_mask = 1
 friction = 1.0
 bounce = 0.0
+physics_material_override = SubResource( 1 )
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="Ground" index="0"]
-shape = SubResource( 1 )
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 2 )
 disabled = false
 
-[node name="MeshInstance" type="MeshInstance" parent="Ground" index="1"]
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -49,12 +147,12 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = SubResource( 5 )
 skeleton = NodePath("..")
-material/0 = null
-_sections_unfolded = [ "Material", "mesh" ]
+material/0 = SubResource( 6 )
+_sections_unfolded = [ "Material", "material", "mesh" ]
 
-[node name="Sun" type="DirectionalLight" parent="." index="1"]
+[node name="Sun" type="DirectionalLight" parent="."]
 transform = Transform( 0.353542, 0.746557, -0.563615, -0.565523, 0.650531, 0.506945, 0.745112, 0.139511, 0.652185, 0, 4.1408, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
@@ -79,16 +177,17 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Shadow" ]
+_sections_unfolded = [ "Light", "Shadow" ]
 
-[node name="Car" type="Spatial" parent="." index="2"]
+[node name="Car" type="Spatial" parent="."]
 transform = Transform( 0.56717, 0, -0.823601, 0, 1, 0, 0.823601, 0, 0.56717, -13.0877, 0.05164, 0 )
 
-[node name="Car" parent="Car" index="0" instance=ExtResource( 3 )]
+[node name="Car" parent="Car" instance=ExtResource( 3 )]
 transform = Transform( 0.51946, 0, 0.854495, 0, 1, 0, -0.854495, 0, 0.51946, 0, 0, 0 )
+physics_material_override = SubResource( 7 )
 MAX_BRAKE_FORCE = 10.0
 
-[node name="Camera" type="Camera" parent="." index="3"]
+[node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38516, 3.59774 )
 keep_aspect = 1
 cull_mask = 1048575
@@ -103,15 +202,18 @@ size = 1.0
 near = 0.05
 far = 100.0
 script = ExtResource( 4 )
+_sections_unfolded = [ "environment" ]
 follow_this_path = NodePath("../Car/Car")
 target_distance = 3.0
 target_height = 2.0
 
-[node name="Track" type="Spatial" parent="." index="4"]
+[node name="Track" type="Spatial" parent="."]
+_sections_unfolded = [ "Transform" ]
 
-[node name="Path" parent="Track" index="0" instance=ExtResource( 5 )]
+[node name="Path" parent="Track" instance=ExtResource( 5 )]
+lower_ground_width = 12.0
 
-[node name="Speed" type="Label" parent="." index="5"]
+[node name="Speed" type="Label" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

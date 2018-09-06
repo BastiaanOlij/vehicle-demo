@@ -15,7 +15,7 @@ background_sky_custom_fov = 0.0
 background_color = Color( 0, 0, 0, 1 )
 background_energy = 1.0
 background_canvas_max_layer = 0
-ambient_light_color = Color( 0, 0, 0, 1 )
+ambient_light_color = Color( 0.133333, 0.133333, 0.133333, 1 )
 ambient_light_energy = 1.0
 ambient_light_sky_contribution = 1.0
 fog_enabled = false
@@ -86,5 +86,5 @@ adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Background" ]
+_sections_unfolded = [ "Ambient Light", "Background", "background_sky" ]
 
