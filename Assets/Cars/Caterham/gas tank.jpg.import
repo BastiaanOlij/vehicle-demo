@@ -14,8 +14,8 @@ dest_files=[ "res://.import/gas tank.jpg-d4a4317dca408b18c3a043a348cded5b.s3tc.s
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/no_bptc_if_rgb=false
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

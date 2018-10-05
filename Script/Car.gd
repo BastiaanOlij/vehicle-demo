@@ -4,7 +4,7 @@ extends VehicleBody
 # Behaviour values
 
 export var MAX_ENGINE_FORCE = 150.0
-export var MAX_BRAKE_FORCE = 10.0
+export var MAX_BRAKE_FORCE = 5.0
 export var MAX_STEER_ANGLE = 0.35
 
 export var steer_speed = 1.0
@@ -86,6 +86,9 @@ func _physics_process(delta):
 	engine_force = throttle_val * MAX_ENGINE_FORCE
 	brake = brake_val * MAX_BRAKE_FORCE
 	
+	$brake_lights.visible = brake_val > 0.1
+	$reverse_lights.visible = is_reverse
+	
 	steer_target = steer_val * MAX_STEER_ANGLE
 	if (steer_target < steer_angle):
 		steer_angle -= steer_speed * delta
@@ -97,6 +100,9 @@ func _physics_process(delta):
 			steer_angle = steer_target
 	
 	steering = steer_angle
+	$interior/steering.rotation.z = -5.0 * steer_angle
+	$wings/left_wing.rotation.y = steer_angle
+	$wings/right_wing.rotation.y = steer_angle
 	
 	# remember where we are
 	last_pos = translation

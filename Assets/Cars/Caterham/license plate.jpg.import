@@ -14,8 +14,8 @@ dest_files=[ "res://.import/license plate.jpg-c241fdcd2ac3c796dc2ce5b8bd2c2172.s
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/no_bptc_if_rgb=false
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true
