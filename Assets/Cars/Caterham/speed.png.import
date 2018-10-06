@@ -14,8 +14,8 @@ dest_files=[ "res://.import/speed.png-c09ca56f66830fa5a682533185dab743.s3tc.stex
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/no_bptc_if_rgb=false
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

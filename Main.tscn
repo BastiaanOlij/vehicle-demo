@@ -3,7 +3,7 @@
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/TexturesCom_RockGrassy0142_2_seamless_S.jpg" type="Texture" id=2]
 [ext_resource path="res://Assets/Cars/Caterham/Car.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Script/Camera.gd" type="Script" id=4]
+[ext_resource path="res://Player/VR/vr_camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scenes/track-base.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -126,8 +126,6 @@ input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
 collision_mask = 1
-friction = 1.0
-bounce = 0.0
 physics_material_override = SubResource( 1 )
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
@@ -185,27 +183,8 @@ transform = Transform( 0.56717, 0, -0.823601, 0, 1, 0, 0.823601, 0, 0.56717, -13
 [node name="Car" parent="Car" instance=ExtResource( 3 )]
 transform = Transform( 0.51946, 0, 0.854495, 0, 1, 0, -0.854495, 0, 0.51946, 0, 0, 0 )
 physics_material_override = SubResource( 7 )
-MAX_BRAKE_FORCE = 10.0
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38516, 3.59774 )
-keep_aspect = 1
-cull_mask = 1048575
-environment = null
-h_offset = 0.0
-v_offset = 0.0
-doppler_tracking = 0
-projection = 0
-current = false
-fov = 70.0
-size = 1.0
-near = 0.05
-far = 100.0
-script = ExtResource( 4 )
-_sections_unfolded = [ "environment" ]
-follow_this_path = NodePath("../Car/Car")
-target_distance = 3.0
-target_height = 2.0
+[node name="ARVROrigin" parent="Car/Car" instance=ExtResource( 4 )]
 
 [node name="Track" type="Spatial" parent="."]
 _sections_unfolded = [ "Transform" ]

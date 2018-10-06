@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player/VR/vr_camera.gd" type="Script" id=1]
+[ext_resource path="res://Player/VR/press_b.png" type="Texture" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 50.0
+height = 100.0
+radial_segments = 64
+rings = 32
+is_hemisphere = false
+
+[sub_resource type="Shader" id=2]
+
+code = "shader_type spatial;
+render_mode unshaded, cull_disabled;
+
+uniform sampler2D image : hint_albedo;
+uniform float alpha = 1.0;
+
+void vertex() {
+	// adjust our projection to place our resulting z at our near plane
+	PROJECTION_MATRIX[2][2] = 0.0;
+	PROJECTION_MATRIX[3][2] = -0.1;
+}
+
+void fragment() {
+	vec2 adjusted_uv = vec2(-UV.x * 10.0 - 0.5, UV.y * 5.0);
+	if (adjusted_uv.x > -6.0 && adjusted_uv.x < -5.0 && adjusted_uv.y > 2.0 && adjusted_uv .y < 3.0) {
+		ALBEDO = texture(image, adjusted_uv).rgb;
+	} else {
+		ALBEDO = vec3(0.0, 0.0, 0.0);
+	}
+	ALPHA = alpha;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+
+render_priority = 0
+shader = SubResource( 2 )
+shader_param/alpha = 1.0
+shader_param/image = ExtResource( 2 )
+_sections_unfolded = [ "shader", "shader_param" ]
+
+[node name="ARVROrigin" type="ARVROrigin"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.303313, 0.985153, -0.797219 )
+world_scale = 1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+max_distance = 0.3
+
+[node name="ARVRCamera" type="ARVRCamera" parent="."]
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 1000.0
+
+[node name="CenterSphere" type="MeshInstance" parent="."]
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = SubResource( 3 )
+_sections_unfolded = [ "material" ]
+
