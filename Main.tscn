@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Textures/TexturesCom_RockGrassy0142_2_seamless_S.jpg" type="Texture" id=2]
-[ext_resource path="res://Assets/Cars/Caterham/Car.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/VR/vr_camera.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Scenes/track-base.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/textures.com/RockGrassy0142_2/TexturesCom_RockGrassy0142_2_seamless_S.jpg" type="Texture" id=2]
+[ext_resource path="res://scenes/cars/caterham/car.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/VR/vr_camera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Scenes/track-base.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
 

@@ -8,26 +8,42 @@
 
 config_version=4
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
-
 [application]
 
 config/name="Vehicle Demo"
-run/main_scene="res://Main.tscn"
+config/description="Godot car racing game demo"
+run/main_scene="res://scenes/startup/Startup.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+resource_queue="*res://addons/resource_queue/resource_queue.gd"
+
+[display]
+
+window/size/width=640
+window/size/height=480
+window/size/resizable=false
 
 [gdnative]
 
-singletons=[ "res://addons/godot-openvr/godot_openvr.gdnlib" ]
+singletons=[ "res://addons/godot-openxr/godot_openxr.gdnlib" ]
 
 [input]
 
 center_hmd={
 "deadzone": 0.5,
 "events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+shift_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+shift_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://assets/textures.com/Roads0069_1/TexturesCom_Roads0069_1_seamless_N.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures.com/Roads0069_1/TexturesCom_Roads0069_1_seamless_S.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/materials/road.shader" type="Shader" id=3]
+
+[resource]
+shader = ExtResource( 3 )
+shader_param/road_texture = ExtResource( 2 )
+shader_param/road_normalmap = ExtResource( 1 )

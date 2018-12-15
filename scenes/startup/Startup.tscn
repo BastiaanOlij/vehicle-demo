@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/misc-textures/startup-background.png" type="Texture" id=1]
+[ext_resource path="res://assets/misc-textures/vr.png" type="Texture" id=2]
+[ext_resource path="res://assets/misc-textures/desktop.png" type="Texture" id=3]
+[ext_resource path="res://scenes/startup/Startup.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/pt_sans_24pt.tres" type="DynamicFont" id=5]
+
+[node name="Startup" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Desktop" type="TextureButton" parent="."]
+margin_left = 10.0
+margin_top = 50.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 330.0
+margin_top = 50.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fullscreen" type="CheckBox" parent="."]
+margin_left = 10.0
+margin_top = 360.0
+margin_right = 24.0
+margin_bottom = 385.0
+custom_fonts/font = ExtResource( 5 )
+text = "Full screen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Desktop" to="." method="_on_Desktop_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

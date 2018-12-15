@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/turbosquid.com/caterham/Dial.gd" type="Script" id=1]
+[ext_resource path="res://assets/turbosquid.com/caterham/DialFace.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CylinderMesh" id=1]
+top_radius = 0.036
+bottom_radius = 0.036
+height = 0.001
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+
+uniform sampler2D face;
+
+void fragment() {
+	ALBEDO = texture(face, vec2(1.0 - (UV.x * 2.0 - 1.0), UV.y * 2.0 - 1.0)).rgb;
+	METALLIC = 0.3;
+	ROUGHNESS = 0.1;
+}
+"
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/face = SubResource( 4 )
+
+[node name="Dial" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.410897, 0.67938, -0.244693 )
+script = ExtResource( 1 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 512, 512 )
+hdr = false
+disable_3d = true
+keep_3d_linear = true
+usage = 1
+
+[node name="DialFace" parent="Viewport" instance=ExtResource( 2 )]
+
+[node name="Face" type="MeshInstance" parent="."]
+transform = Transform( 0.995763, -0.0917637, 0.00590516, 0, -0.064219, -0.997936, 0.0919535, 0.993708, -0.0639469, 0.00026989, -0.00281882, 0.00273094 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
