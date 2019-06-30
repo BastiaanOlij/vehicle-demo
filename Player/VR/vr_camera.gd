@@ -8,8 +8,17 @@ var alpha = 1.0
 func _ready():
 	var interface = ARVRServer.find_interface("OpenVR")
 	if interface and interface.initialize():
+		# yes we're in VR :)
 		get_viewport().arvr = true
-		get_viewport().hdr = false
+		
+		# turn off vsync
+		OS.vsync_enabled = false
+		
+		# change our physics fps
+		Engine.target_fps = 90
+		
+		# Uncomment this if you have an older version of the openvr plugin
+		# get_viewport().hdr = false
 
 func _process(delta):
 	# check if our reset is pressed

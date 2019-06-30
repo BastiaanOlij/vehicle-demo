@@ -1,13 +1,14 @@
 # Godot VehicleBody Demo project
 
 This is a Godot demo project in support of my vehicle body youtube tutorial videos.
-- [Part one](https://youtu.be/B5vE-nNszxA)
-- [Part two](https://youtu.be/Yvy8vQ-5O_w)
-- [Part three](https://youtu.be/DOoVk8WPSAQ)
+- [Part one](https://youtu.be/B5vE-nNszxA) import and setup a car
+- [Part two](https://youtu.be/Yvy8vQ-5O_w) Building a track
+- [Part three](https://youtu.be/DOoVk8WPSAQ) Improving the track
+- [Part four](https://youtu.be/QnKYSKzhlTQ) Finishing the track
+- [Part five](https://youtu.be/IijlGjDh8lk) Going VR
 
-Part one works best with Godot 3.0.4 or newer.
-The other parts will require a recent Godot 3.1 build.
-You will need to download this in order to run this project.
+You will need Godot 3.1 or newer to run this project, download this from https://godotengine.org
+I'm currently using a nightly build of Godot, please let me know if you have any problems running the project in the stable build.
 
 ### License
 
@@ -35,4 +36,8 @@ You can follow me on twitter for regular updates here:
 https://twitter.com/mux213
 
 Videos about my work with Godot can by found on my youtube page:
-https://www.youtube.com/channel/UCrbLJYzJjDf2p-vJC011lYw
+https://www.youtube.com/BastiaanOlij
+
+Support my work by becoming my Patreon:
+https://www.patreon.com/mux213
+

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/TexturesCom_Roads0069_1_seamless_S.jpg-ee09d43304ae4420c9a9e58255dec815.s3tc.stex"
-path.etc2="res://.import/TexturesCom_Roads0069_1_seamless_S.jpg-ee09d43304ae4420c9a9e58255dec815.etc2.stex"
+path.s3tc="res://.import/TexturesCom_Roads0069_1_seamless_N.png-7c567dd4d87942dc9c9cc90992e841d9.s3tc.stex"
+path.etc2="res://.import/TexturesCom_Roads0069_1_seamless_N.png-7c567dd4d87942dc9c9cc90992e841d9.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/TexturesCom_Roads0069_1_seamless_S.jpg"
-dest_files=[ "res://.import/TexturesCom_Roads0069_1_seamless_S.jpg-ee09d43304ae4420c9a9e58255dec815.s3tc.stex", "res://.import/TexturesCom_Roads0069_1_seamless_S.jpg-ee09d43304ae4420c9a9e58255dec815.etc2.stex" ]
+source_file="res://Assets/Textures/TexturesCom_Roads0069_1_seamless_N.png"
+dest_files=[ "res://.import/TexturesCom_Roads0069_1_seamless_N.png-7c567dd4d87942dc9c9cc90992e841d9.s3tc.stex", "res://.import/TexturesCom_Roads0069_1_seamless_N.png-7c567dd4d87942dc9c9cc90992e841d9.etc2.stex" ]
 
 [params]
 

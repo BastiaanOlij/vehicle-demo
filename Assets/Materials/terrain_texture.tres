@@ -1,12 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Textures/TexturesCom_RockGrassy0142_2_seamless_S.jpg" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/TexturesCom_RockGrassy0142_2_seamless_N.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/TexturesCom_RockGrassy0142_2_seamless_S.jpg" type="Texture" id=2]
 
 [sub_resource type="Shader" id=1]
-
 code = "shader_type spatial;
 
 uniform sampler2D terrain_texture : hint_albedo;
+uniform sampler2D terrain_normalmap : hint_normal;
 varying vec2 terrain_uv;
 
 void vertex() {
@@ -15,15 +16,13 @@ void vertex() {
 
 void fragment() {
 	vec4 color = texture(terrain_texture, terrain_uv);
+	NORMALMAP = texture(terrain_normalmap, terrain_uv).rgb;
 	ALBEDO = color.rgb;
 	METALLIC = 0.0;
 	ROUGHNESS = 0.8;
 }"
 
 [resource]
-
-render_priority = 0
 shader = SubResource( 1 )
-shader_param/terrain_texture = ExtResource( 1 )
-_sections_unfolded = [ "shader", "shader_param" ]
-
+shader_param/terrain_texture = ExtResource( 2 )
+shader_param/terrain_normalmap = ExtResource( 1 )

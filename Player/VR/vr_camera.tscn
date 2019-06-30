@@ -4,7 +4,6 @@
 [ext_resource path="res://Player/VR/vr_message_material.tres" type="Material" id=2]
 
 [sub_resource type="SphereMesh" id=1]
-
 radius = 50.0
 height = 100.0
 
@@ -19,4 +18,3 @@ far = 1000.0
 visible = false
 mesh = SubResource( 1 )
 material/0 = ExtResource( 2 )
-

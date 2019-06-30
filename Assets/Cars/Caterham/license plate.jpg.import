@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/license plate.jpg-c241fdcd2ac3c796dc2ce5b8bd2c2172.s3tc.stex"
 path.etc2="res://.import/license plate.jpg-c241fdcd2ac3c796dc2ce5b8bd2c2172.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

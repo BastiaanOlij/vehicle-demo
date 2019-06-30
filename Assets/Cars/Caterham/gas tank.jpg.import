@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/gas tank.jpg-d4a4317dca408b18c3a043a348cded5b.s3tc.stex"
 path.etc2="res://.import/gas tank.jpg-d4a4317dca408b18c3a043a348cded5b.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 

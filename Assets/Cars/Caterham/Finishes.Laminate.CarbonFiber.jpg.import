@@ -4,6 +4,10 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Finishes.Laminate.CarbonFiber.jpg-37d4d11bebadcb4ddeca8f6e6d8f9e0f.s3tc.stex"
 path.etc2="res://.import/Finishes.Laminate.CarbonFiber.jpg-37d4d11bebadcb4ddeca8f6e6d8f9e0f.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
