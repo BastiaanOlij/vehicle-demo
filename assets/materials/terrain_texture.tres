@@ -1,28 +1,23 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
 
 [ext_resource path="res://assets/textures.com/RockGrassy0142_2/TexturesCom_RockGrassy0142_2_seamless_N.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures.com/RockGrassy0142_2/TexturesCom_RockGrassy0142_2_seamless_S.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/materials/terrain.shader" type="Shader" id=3]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type spatial;
+[sub_resource type="OpenSimplexNoise" id=1]
 
-uniform sampler2D terrain_texture : hint_albedo;
-uniform sampler2D terrain_normalmap : hint_normal;
-varying vec2 terrain_uv;
-
-void vertex() {
-	terrain_uv = (WORLD_MATRIX * vec4(VERTEX, 1.0)).xz * vec2(0.2, 0.2);
-}
-
-void fragment() {
-	vec4 color = texture(terrain_texture, terrain_uv);
-	NORMALMAP = texture(terrain_normalmap, terrain_uv).rgb;
-	ALBEDO = color.rgb;
-	METALLIC = 0.0;
-	ROUGHNESS = 0.8;
-}"
+[sub_resource type="NoiseTexture" id=2]
+seamless = true
+noise = SubResource( 1 )
 
 [resource]
-shader = SubResource( 1 )
+shader = ExtResource( 3 )
+shader_param/height_scale = 10.0
+shader_param/height_uv_offset = Vector2( -0.5, -0.5 )
+shader_param/height_uv_size = Vector2( 2048, 2048 )
+shader_param/normal_depth = 1.0
+shader_param/terrain_scale = Vector2( 0.2, 0.2 )
+shader_param/noise_scale = Vector2( 0.01, 0.01 )
 shader_param/terrain_texture = ExtResource( 2 )
 shader_param/terrain_normalmap = ExtResource( 1 )
+shader_param/noise = SubResource( 2 )

@@ -1,0 +1,198 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/cc0textures.com/Concrete020/concrete020.tres" type="Material" id=1]
+[ext_resource path="res://assets/cc0textures.com/Metal009/metal009.tres" type="Material" id=2]
+[ext_resource path="res://assets/misc-textures/people.png" type="Texture" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+material = ExtResource( 2 )
+size = Vector3( 0.5, 0.1, 50 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+
+uniform sampler2D people : hint_albedo;
+
+uniform vec2 people_in_image = vec2(8,4);
+uniform float num_people = 1;
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+void fragment() {
+	vec2 offset = vec2(UV.x * num_people, UV.y);
+	float which = floor(offset.x);
+	offset.x = (offset.x - which) / people_in_image.x;
+	offset.y = offset.y / people_in_image.y;
+	
+	vec2 pick = vec2(rand(vec2(WORLD_MATRIX[3][0] + which, WORLD_MATRIX[3][1])), rand(vec2(WORLD_MATRIX[3][0], WORLD_MATRIX[3][1] + which)));
+	pick.x = floor(pick.x * people_in_image.x) / people_in_image.x;
+	pick.y = floor(pick.y * people_in_image.y) / people_in_image.y;
+	
+	vec2 people_uv = pick + offset;
+	vec4 color = texture(people, people_uv);
+	ALBEDO = color.rgb;
+	ALPHA = color.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+render_priority = 20
+shader = SubResource( 2 )
+shader_param/people_in_image = Vector2( 8, 4 )
+shader_param/num_people = 22.0
+shader_param/people = ExtResource( 3 )
+
+[sub_resource type="PlaneMesh" id=4]
+material = SubResource( 3 )
+size = Vector2( 22, 2 )
+
+[sub_resource type="CubeMesh" id=5]
+material = ExtResource( 1 )
+size = Vector3( 10, 0.2, 50.8 )
+
+[node name="Stands" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9874, 0, 0 )
+
+[node name="Seats01" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="PeopleLeft" type="MeshInstance" parent="Seats01"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, -5.96046e-08, -12.2249 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="PeopleRight" type="MeshInstance" parent="Seats01"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.270377, 0, 12.0999 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Seats02" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="PeopleLeft" type="MeshInstance" parent="Seats02"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -12.8584 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="PeopleRight" type="MeshInstance" parent="Seats02"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, 12.8295 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Seats03" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="PeopleLeft" type="MeshInstance" parent="Seats03"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -12.2256 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="PeopleRight" type="MeshInstance" parent="Seats03"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 2.38419e-07, 11.7364 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Seats04" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="PeopleLeft" type="MeshInstance" parent="Seats04"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 2.38419e-07, -13.7033 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="PeopleRight" type="MeshInstance" parent="Seats04"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, 11.9363 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Seats05" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="PeopleLeft" type="MeshInstance" parent="Seats05"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -13.1954 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="PeopleRight" type="MeshInstance" parent="Seats05"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, -2.38419e-07, 13.4649 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Seats06" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.5, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="PeopleLeft" type="MeshInstance" parent="Seats06"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -13.1133 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="PeopleRight" type="MeshInstance" parent="Seats06"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, 12.0407 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Seats07" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="PeopleLeft" type="MeshInstance" parent="Seats07"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -13.2505 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="PeopleRight" type="MeshInstance" parent="Seats07"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, -4.76837e-07, 13.8621 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Seats08" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4.5, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Seats09" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Seats10" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5.5, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Wall01" type="CSGPolygon" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.25 )
+polygon = PoolVector2Array( -4, 0, -4.5, 1.5, 4, 7.5, 6, 7, 5, 0 )
+depth = 0.5
+material = ExtResource( 1 )
+
+[node name="Wall02" type="CSGPolygon" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25.25 )
+polygon = PoolVector2Array( -4, 0, -4.5, 1.5, 4, 7.5, 6, 7, 5, 0 )
+depth = 0.5
+material = ExtResource( 1 )
+
+[node name="Wall03" type="CSGPolygon" parent="."]
+polygon = PoolVector2Array( -4, 0, -4.5, 1.5, 4, 7.5, 6, 7, 5, 0 )
+depth = 0.5
+material = ExtResource( 1 )
+
+[node name="Top" type="MeshInstance" parent="."]
+transform = Transform( 0.971417, 0.237381, 0, -0.237381, 0.971417, 0, 0, 0, 1, 1.15116, 8.17967, 0 )
+mesh = SubResource( 5 )
+material/0 = null

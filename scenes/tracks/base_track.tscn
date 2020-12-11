@@ -12,3 +12,8 @@ shape = SubResource( 1 )
 [node name="sun" type="DirectionalLight" parent="."]
 transform = Transform( 0.756904, 0.274123, -0.593257, 0, 0.907777, 0.419452, 0.653526, -0.317485, 0.6871, 0, 10, 0 )
 shadow_enabled = true
+shadow_bias = 0.01
+directional_shadow_split_1 = 0.01
+directional_shadow_split_2 = 0.04
+directional_shadow_split_3 = 0.1
+directional_shadow_max_distance = 1000.0

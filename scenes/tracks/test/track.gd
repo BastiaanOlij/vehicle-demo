@@ -1,4 +1,4 @@
-extends "res://scenes/tracks/base_tracks.gd"
+extends "res://scenes/tracks/base_track.gd"
 
 func init_world(world_construct):
 	.init_world(world_construct)

@@ -5,17 +5,17 @@
 [ext_resource path="res://assets/fonts/pt_sans_24pt.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/turbosquid.com/caterham/Dial.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 0.136364 ), 0.0, -0.0916472, 0, 0, Vector2( 0.109589, 0.290909 ), 0.0, 0.0, 0, 0, Vector2( 0.561644, 0.695454 ), 1.97297, 1.97297, 0, 0, Vector2( 0.937736, 1 ), -1.80517e-06, -1.80517e-06, 0, 0, Vector2( 0.987736, 0.818182 ), -4.9484, -4.9484, 0, 0, Vector2( 0.99308, 0 ), -8.53862, 0.0, 0, 0 ]
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.0727272 ), 0.0, 0.0, 0, 0, Vector2( 0.125899, 0.0818181 ), 0.0, 0.705286, 0, 0, Vector2( 0.931655, 1 ), 0.0, -1.50057, 0, 0, Vector2( 1, 0 ), -9.05604, 0.0, 0, 0 ]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.884512, 0.451341, 1.65455 )
 
 [node name="Car" instance=ExtResource( 1 )]
 mass = 575.0
 can_sleep = false
 script = ExtResource( 2 )
-power_curve = SubResource( 1 )
+power_curve = SubResource( 2 )
 
 [node name="steering" parent="interior" index="0"]
 transform = Transform( 1, -4.0663e-08, -1.07197e-07, 1.64974e-08, 0.976296, -0.21644, 1.13458e-07, 0.21644, 0.976296, -26.6765, 4.82215, 7.54762 )
@@ -34,7 +34,7 @@ suspension_travel = 0.05
 suspension_stiffness = 150.0
 suspension_max_force = 2000.0
 damping_compression = 0.8
-damping_relaxation = 0.8
+damping_relaxation = 0.9
 
 [node name="left_front" parent="left_front" index="0"]
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
@@ -47,10 +47,10 @@ wheel_radius = 0.32
 wheel_rest_length = 0.07
 wheel_friction_slip = 10.0
 suspension_travel = 0.05
-suspension_stiffness = 130.0
+suspension_stiffness = 150.0
 suspension_max_force = 2000.0
-damping_compression = 0.6
-damping_relaxation = 0.6
+damping_compression = 0.7
+damping_relaxation = 0.8
 
 [node name="left_rear" parent="left_rear" index="0"]
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
@@ -66,7 +66,7 @@ suspension_travel = 0.05
 suspension_stiffness = 150.0
 suspension_max_force = 2000.0
 damping_compression = 0.8
-damping_relaxation = 0.8
+damping_relaxation = 0.9
 
 [node name="right_front" parent="right_front" index="0"]
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
@@ -79,17 +79,17 @@ wheel_radius = 0.32
 wheel_rest_length = 0.07
 wheel_friction_slip = 10.0
 suspension_travel = 0.05
-suspension_stiffness = 130.0
+suspension_stiffness = 150.0
 suspension_max_force = 2000.0
-damping_compression = 0.6
-damping_relaxation = 0.6
+damping_compression = 0.7
+damping_relaxation = 0.8
 
 [node name="right_rear" parent="right_rear" index="0"]
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="11"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="brake_lights" type="Spatial" parent="." index="12"]
 

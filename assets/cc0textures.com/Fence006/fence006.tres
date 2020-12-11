@@ -1,0 +1,48 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=2]
+
+[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Metalness.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Normal.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Roughness.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Color.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Opacity.jpg" type="Texture" id=5]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+uniform sampler2D texture_albedo : hint_albedo;
+uniform sampler2D texture_alpha : hint_white;
+uniform float specular;
+uniform sampler2D texture_metallic : hint_white;
+uniform sampler2D texture_roughness : hint_white;
+uniform sampler2D texture_normal : hint_normal;
+uniform float normal_scale : hint_range(-16,16);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	ALBEDO = texture(texture_albedo,base_uv).rgb;
+	ALPHA = texture(texture_alpha,base_uv).r;
+	METALLIC = texture(texture_metallic,base_uv).r;
+	ROUGHNESS = texture(texture_roughness,base_uv).r;
+	SPECULAR = specular;
+	NORMALMAP = texture(texture_normal,base_uv).rgb;
+	NORMALMAP_DEPTH = normal_scale;
+}
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/specular = 0.5
+shader_param/normal_scale = 1.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 4 )
+shader_param/texture_alpha = ExtResource( 5 )
+shader_param/texture_metallic = ExtResource( 1 )
+shader_param/texture_roughness = ExtResource( 3 )
+shader_param/texture_normal = ExtResource( 2 )

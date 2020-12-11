@@ -6,5 +6,6 @@
 
 [resource]
 shader = ExtResource( 3 )
+shader_param/uv_scale = Vector2( 1, 0.25 )
 shader_param/road_texture = ExtResource( 2 )
 shader_param/road_normalmap = ExtResource( 1 )

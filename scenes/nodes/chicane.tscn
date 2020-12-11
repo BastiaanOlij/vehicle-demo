@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/misc-textures/chicane.png" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 0.2, 1, 1 )
+
+[node name="chicane01" type="Path"]
+curve = null
+
+[node name="CSGPolygon" type="CSGPolygon" parent="."]
+use_collision = true
+invert_faces = true
+polygon = PoolVector2Array( 0, 0.08, 2, 0.08, 2, -0.1, 0, -0.1 )
+mode = 2
+path_node = NodePath("..")
+path_interval = 5.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_joined = false
+material = SubResource( 2 )

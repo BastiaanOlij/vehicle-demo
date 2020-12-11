@@ -1,0 +1,15 @@
+[gd_resource type="SpatialMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://assets/cc0textures.com/concrete031/Concrete031_1K_Color.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/cc0textures.com/concrete031/Concrete031_1K_Roughness.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/cc0textures.com/concrete031/Concrete031_1K_Normal.jpg" type="Texture" id=3]
+
+[resource]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 1 )
+roughness_texture = ExtResource( 2 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 3 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_triplanar = true

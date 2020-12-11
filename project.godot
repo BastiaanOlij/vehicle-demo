@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "MultiMeshInstance",
+"class": "MultiAlongPath",
+"language": "GDScript",
+"path": "res://scenes/nodes/MultiAlongPath.gd"
+} ]
+_global_script_class_icons={
+"MultiAlongPath": ""
+}
+
 [application]
 
 config/name="Vehicle Demo"
@@ -25,6 +35,10 @@ window/size/width=640
 window/size/height=480
 window/size/resizable=false
 
+[editor_plugins]
+
+enabled=PoolStringArray( "sketchfab" )
+
 [gdnative]
 
 singletons=[ "res://addons/godot-openxr/godot_openxr.gdnlib" ]
@@ -38,12 +52,12 @@ center_hmd={
 }
 shift_up={
 "deadzone": 0.5,
-"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 shift_down={
 "deadzone": 0.5,
-"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 

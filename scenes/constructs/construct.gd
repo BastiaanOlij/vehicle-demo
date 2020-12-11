@@ -83,4 +83,5 @@ func _ready():
 	resource_queue.start()
 	
 	# and load our starting scene
-	load_world("res://scenes/tracks/track_01/track.tscn")
+	# load_world("res://scenes/tracks/track_01/track.tscn")
+	load_world("res://scenes/tracks/test/track.tscn")
