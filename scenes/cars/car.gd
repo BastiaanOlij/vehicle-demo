@@ -1,5 +1,7 @@
 extends VehicleBody
 
+onready var inputmap = get_node('/root/inputmap')
+
 ############################################################
 # Steering
 
@@ -60,13 +62,6 @@ func calculate_rpm() -> float:
 ############################################################
 # Input
 
-export var joy_steering = JOY_ANALOG_LX
-export var steering_mult = -1.0
-export var joy_throttle = JOY_ANALOG_R2
-export var throttle_mult = 1.0
-export var joy_brake = JOY_ANALOG_L2
-export var brake_mult = 1.0
-
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -77,11 +72,11 @@ func _process_gear_inputs(delta : float):
 		gear_timer = max(0.0, gear_timer - delta)
 		clutch_position = 0.0
 	else:
-		if Input.is_action_just_pressed("shift_down") and current_gear > -1:
+		if inputmap.get_shift_down() and current_gear > -1:
 			current_gear = current_gear - 1
 			gear_timer = gear_shift_time
 			clutch_position = 0.0
-		elif Input.is_action_just_pressed("shift_up") and current_gear < gear_ratios.size():
+		elif inputmap.get_shift_up() and current_gear < gear_ratios.size():
 			current_gear = current_gear + 1
 			gear_timer = gear_shift_time
 			clutch_position = 0.0
@@ -103,33 +98,9 @@ func _physics_process(delta):
 	current_speed_mps = (translation - last_pos).length() / delta
 	
 	# get our joystick inputs
-	var steer_val = steering_mult * Input.get_joy_axis(0, joy_steering)
-	var throttle_val = throttle_mult * Input.get_joy_axis(0, joy_throttle)
-	var brake_val = brake_mult * Input.get_joy_axis(0, joy_brake)
-	
-	if (abs(steer_val) < 0.05):
-		steer_val = 0.0
-	elif steer_curve:
-		if steer_val < 0.0:
-			steer_val = -steer_curve.interpolate_baked(-steer_val)
-		else:
-			steer_val = steer_curve.interpolate_baked(steer_val)
-	
-	if (throttle_val < 0.0):
-		throttle_val = 0.0
-	
-	if (brake_val < 0.0):
-		brake_val = 0.0
-	
-	# overrules for keyboard
-	if Input.is_action_pressed("ui_up"):
-		throttle_val = 1.0
-	if Input.is_action_pressed("ui_down"):
-		brake_val = 1.0
-	if Input.is_action_pressed("ui_left"):
-		steer_val = 1.0
-	elif Input.is_action_pressed("ui_right"):
-		steer_val = -1.0
+	var steer_val = inputmap.get_steering_input()
+	var throttle_val = inputmap.get_throttle_input()
+	var brake_val = inputmap.get_brake_input()
 	
 	var rpm = calculate_rpm()
 	var rpm_factor = clamp(rpm / max_engine_rpm, 0.0, 1.0)
@@ -149,13 +120,21 @@ func _physics_process(delta):
 	
 	var max_steer_speed = MAX_STEER_SPEED * 1000.0 / 3600.0
 	var steer_speed_factor = clamp(current_speed_mps / max_steer_speed, 0.0, 1.0)
+
+	if (abs(steer_val) < 0.05):
+		steer_val = 0.0
+	elif steer_curve:
+		if steer_val < 0.0:
+			steer_val = -steer_curve.interpolate_baked(-steer_val)
+		else:
+			steer_val = steer_curve.interpolate_baked(steer_val)
 	
 	steer_angle = steer_val * lerp(max_steer_angle_rad, speed_steer_angle_rad, steer_speed_factor)
-	steering = steer_angle
+	steering = -steer_angle
 	
-	$interior/steering.rotation.z = -steer_val * max_steer_input_rad
-	$wings/left_wing.rotation.y = steer_angle
-	$wings/right_wing.rotation.y = steer_angle
+	$interior/steering.rotation.z = steer_val * max_steer_input_rad
+	$wings/left_wing.rotation.y = -steer_angle
+	$wings/right_wing.rotation.y = -steer_angle
 	
 	# remember where we are
 	last_pos = translation
