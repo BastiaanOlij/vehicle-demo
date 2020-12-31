@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/constructs/construct.gd" type="Script" id=1]
+[ext_resource path="res://scenes/effects/FadeToBlack.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/loading/loading_scene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://default_env.tres" type="Environment" id=5]
+
+[node name="construct" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="FadeToBlack" parent="." instance=ExtResource( 2 )]
+is_faded = true
+
+[node name="Player" type="Spatial" parent="."]
+
+[node name="Loading_scene" parent="." instance=ExtResource( 3 )]
+
+[node name="World_scene" type="Spatial" parent="."]
+
+[node name="World_environment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )

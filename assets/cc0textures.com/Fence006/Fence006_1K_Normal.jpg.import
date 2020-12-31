@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Fence006_1K_Normal.jpg-bb1d19ff9c0a12c72b13d4f5c6fdb3be.s3tc.stex"
+path.etc2="res://.import/Fence006_1K_Normal.jpg-bb1d19ff9c0a12c72b13d4f5c6fdb3be.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://assets/cc0textures.com/Fence006/Fence006_1K_Normal.jpg"
+dest_files=[ "res://.import/Fence006_1K_Normal.jpg-bb1d19ff9c0a12c72b13d4f5c6fdb3be.s3tc.stex", "res://.import/Fence006_1K_Normal.jpg-bb1d19ff9c0a12c72b13d4f5c6fdb3be.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=1
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/tracks/track_01/track.gd" type="Script" id=1]
+[ext_resource path="res://assets/Scenes/track-base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/cars/caterham/car.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/tracks/base_track.tscn" type="PackedScene" id=4]
+
+[node name="Track" instance=ExtResource( 4 )]
+script = ExtResource( 1 )
+
+[node name="Path" parent="." index="2" instance=ExtResource( 2 )]
+rail_distance = 1.0
+post_distance = 1.0
+
+[node name="Car" parent="." index="3" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2177, 0.589137, 0 )
+
+[node name="Driver" type="RemoteTransform" parent="Car" index="17"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -0.304, 0.872, -0.749 )

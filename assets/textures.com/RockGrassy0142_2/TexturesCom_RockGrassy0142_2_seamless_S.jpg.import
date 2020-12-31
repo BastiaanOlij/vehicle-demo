@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/TexturesCom_RockGrassy0142_2_seamless_S.jpg-bb565628df46d92e686d028ca6cac46b.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/textures.com/RockGrassy0142_2/TexturesCom_RockGrassy0142_2_seamless_S.jpg"
+dest_files=[ "res://.import/TexturesCom_RockGrassy0142_2_seamless_S.jpg-bb565628df46d92e686d028ca6cac46b.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

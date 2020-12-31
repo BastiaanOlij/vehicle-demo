@@ -1,0 +1,131 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/turbosquid.com/caterham/caterham.gltf" type="PackedScene" id=1]
+[ext_resource path="res://scenes/cars/car.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/pt_sans_24pt.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/turbosquid.com/caterham/Dial.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.0727272 ), 0.0, 0.0, 0, 0, Vector2( 0.125899, 0.0818181 ), 0.0, 0.705286, 0, 0, Vector2( 0.931655, 1 ), 0.0, -1.50057, 0, 0, Vector2( 1, 0 ), -9.05604, 0.0, 0, 0 ]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.884512, 0.451341, 1.65455 )
+
+[node name="Car" instance=ExtResource( 1 )]
+mass = 575.0
+can_sleep = false
+script = ExtResource( 2 )
+power_curve = SubResource( 2 )
+
+[node name="steering" parent="interior" index="0"]
+transform = Transform( 1, -4.0663e-08, -1.07197e-07, 1.64974e-08, 0.976296, -0.21644, 1.13458e-07, 0.21644, 0.976296, -26.6765, 4.82215, 7.54762 )
+
+[node name="Lamp" parent="." index="5"]
+visible = false
+
+[node name="left_front" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.65, 0.37, 1.275 )
+use_as_steering = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.32
+wheel_rest_length = 0.07
+wheel_friction_slip = 10.0
+suspension_travel = 0.05
+suspension_stiffness = 150.0
+suspension_max_force = 2000.0
+damping_compression = 0.8
+damping_relaxation = 0.9
+
+[node name="left_front" parent="left_front" index="0"]
+transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
+
+[node name="left_rear" parent="." index="7"]
+transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.935, 0.37, -1.255 )
+use_as_traction = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.32
+wheel_rest_length = 0.07
+wheel_friction_slip = 10.0
+suspension_travel = 0.05
+suspension_stiffness = 150.0
+suspension_max_force = 2000.0
+damping_compression = 0.7
+damping_relaxation = 0.8
+
+[node name="left_rear" parent="left_rear" index="0"]
+transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
+
+[node name="right_front" parent="." index="8"]
+transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.65, 0.37, 1.275 )
+use_as_steering = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.32
+wheel_rest_length = 0.07
+wheel_friction_slip = 10.0
+suspension_travel = 0.05
+suspension_stiffness = 150.0
+suspension_max_force = 2000.0
+damping_compression = 0.8
+damping_relaxation = 0.9
+
+[node name="right_front" parent="right_front" index="0"]
+transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
+
+[node name="right_rear" parent="." index="9"]
+transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.935, 0.37, -1.255 )
+use_as_traction = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.32
+wheel_rest_length = 0.07
+wheel_friction_slip = 10.0
+suspension_travel = 0.05
+suspension_stiffness = 150.0
+suspension_max_force = 2000.0
+damping_compression = 0.7
+damping_relaxation = 0.8
+
+[node name="right_rear" parent="right_rear" index="0"]
+transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631, 0 )
+shape = SubResource( 1 )
+
+[node name="brake_lights" type="Spatial" parent="." index="12"]
+
+[node name="right_brake_light" type="OmniLight" parent="brake_lights" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 4.37114e-08, 0, -4.37114e-08, 1, -0.34591, 0.411791, -1.79736 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 2.0
+omni_range = 0.1
+
+[node name="left_brake_light" type="OmniLight" parent="brake_lights" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 4.37114e-08, 0, -4.37114e-08, 1, 0.351679, 0.411791, -1.79736 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 2.0
+omni_range = 0.1
+
+[node name="reverse_lights" type="Spatial" parent="." index="13"]
+
+[node name="left_reverse_light" type="OmniLight" parent="reverse_lights" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.748783, 0.551986, -1.66381 )
+light_energy = 2.0
+omni_range = 0.1
+
+[node name="right_reverse_light" type="OmniLight" parent="reverse_lights" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749, 0.552, -1.664 )
+light_energy = 2.0
+omni_range = 0.1
+
+[node name="RPMDial" parent="." index="14" instance=ExtResource( 4 )]
+
+[node name="Speedo" parent="." index="15" instance=ExtResource( 4 )]
+transform = Transform( 0.999929, -0.000697565, -0.0119349, 0, 0.998296, -0.0583481, 0.0119552, 0.0583439, 0.998225, -0.309808, 0.680574, -0.233943 )
+
+[node name="Info" type="Label" parent="." index="16"]
+margin_right = 627.0
+margin_bottom = 130.0
+custom_fonts/font = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

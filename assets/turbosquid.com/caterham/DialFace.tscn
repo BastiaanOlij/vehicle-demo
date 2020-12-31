@@ -1,0 +1,144 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/turbosquid.com/caterham/DialFace.gd" type="Script" id=1]
+
+[node name="DialFace" type="ColorRect"]
+margin_right = 512.0
+margin_bottom = 512.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="Node2D" parent="."]
+position = Vector2( 256, 256 )
+
+[node name="RPM0" type="Node2D" parent="Center"]
+rotation = 2.44346
+
+[node name="Block" type="ColorRect" parent="Center/RPM0"]
+margin_left = 200.0
+margin_top = -5.0
+margin_right = 240.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM1000" type="Node2D" parent="Center"]
+rotation = 3.01069
+
+[node name="Block" type="ColorRect" parent="Center/RPM1000"]
+margin_left = 200.0
+margin_top = -5.0
+margin_right = 240.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM2000" type="Node2D" parent="Center"]
+rotation = 3.57792
+
+[node name="Block" type="ColorRect" parent="Center/RPM2000"]
+margin_left = 200.0
+margin_top = -5.0
+margin_right = 240.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM3000" type="Node2D" parent="Center"]
+rotation = 4.14516
+
+[node name="Block" type="ColorRect" parent="Center/RPM3000"]
+margin_left = 200.0
+margin_top = -5.0
+margin_right = 240.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM4000" type="Node2D" parent="Center"]
+rotation = 4.71239
+
+[node name="Block" type="ColorRect" parent="Center/RPM4000"]
+margin_left = 200.0
+margin_top = -5.0
+margin_right = 240.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM5000" type="Node2D" parent="Center"]
+rotation = 5.27962
+
+[node name="Block" type="ColorRect" parent="Center/RPM5000"]
+margin_left = 200.0
+margin_top = -5.0
+margin_right = 240.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM6000" type="Node2D" parent="Center"]
+rotation = 5.84685
+
+[node name="Block" type="ColorRect" parent="Center/RPM6000"]
+margin_left = 200.0
+margin_top = -5.0
+margin_right = 240.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM7000" type="Node2D" parent="Center"]
+rotation = 6.41408
+
+[node name="Block" type="ColorRect" parent="Center/RPM7000"]
+margin_left = 200.0
+margin_top = -5.0
+margin_right = 240.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM8000" type="Node2D" parent="Center"]
+rotation = 6.98132
+
+[node name="Block" type="ColorRect" parent="Center/RPM8000"]
+margin_left = 200.0
+margin_top = -5.0
+margin_right = 240.0
+margin_bottom = 5.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dial" type="Node2D" parent="Center"]
+
+[node name="ColorRect" type="ColorRect" parent="Center/Dial"]
+margin_left = 28.0
+margin_top = -11.0
+margin_right = 278.0
+margin_bottom = 9.0
+rect_rotation = 140.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

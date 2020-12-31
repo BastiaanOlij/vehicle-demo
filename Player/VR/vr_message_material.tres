@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
-
-[ext_resource path="res://Player/VR/vr_message.shader" type="Shader" id=1]
-[ext_resource path="res://Player/VR/press_b.png" type="Texture" id=2]
-
-[resource]
-shader = ExtResource( 1 )
-shader_param/alpha = 1.0
-shader_param/image = ExtResource( 2 )
