@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/caterham.gltf-490783ac0d9eade9617fbe853cbbd2c1.scn"
+path="res://.import/caterham.gltf-82ad16aec1207ad4a33dea1529bea7ca.scn"
 
 [deps]
 
-source_file="res://assets/turbosquid.com/Caterham/caterham.gltf"
-dest_files=[ "res://.import/caterham.gltf-490783ac0d9eade9617fbe853cbbd2c1.scn" ]
+source_file="res://assets/turbosquid.com/caterham/caterham.gltf"
+dest_files=[ "res://.import/caterham.gltf-82ad16aec1207ad4a33dea1529bea7ca.scn" ]
 
 [params]
 
