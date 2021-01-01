@@ -33,12 +33,13 @@ void fragment() {
 	vec2 people_uv = pick + offset;
 	vec4 color = texture(people, people_uv);
 	ALBEDO = color.rgb;
-	ALPHA = color.a;
+	if (color.a < 0.8) {
+		discard;
+	}
 }
 "
 
 [sub_resource type="ShaderMaterial" id=3]
-render_priority = 20
 shader = SubResource( 2 )
 shader_param/people_in_image = Vector2( 8, 4 )
 shader_param/num_people = 22.0
@@ -76,12 +77,12 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="PeopleLeft" type="MeshInstance" parent="Seats02"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -12.8584 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, -12.858 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="PeopleRight" type="MeshInstance" parent="Seats02"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, 12.8295 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, 12.829 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -91,12 +92,12 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="PeopleLeft" type="MeshInstance" parent="Seats03"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -12.2256 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, -12.226 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="PeopleRight" type="MeshInstance" parent="Seats03"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 2.38419e-07, 11.7364 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, 11.736 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -106,12 +107,12 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="PeopleLeft" type="MeshInstance" parent="Seats04"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 2.38419e-07, -13.7033 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, -13.703 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="PeopleRight" type="MeshInstance" parent="Seats04"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, 11.9363 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, 11.936 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -121,12 +122,12 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="PeopleLeft" type="MeshInstance" parent="Seats05"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -13.1954 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, -13.195 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="PeopleRight" type="MeshInstance" parent="Seats05"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, -2.38419e-07, 13.4649 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, 13.465 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -136,12 +137,12 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="PeopleLeft" type="MeshInstance" parent="Seats06"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -13.1133 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, -13.113 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="PeopleRight" type="MeshInstance" parent="Seats06"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, 12.0407 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, 12.041 )
 mesh = SubResource( 4 )
 material/0 = null
 
@@ -151,12 +152,12 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="PeopleLeft" type="MeshInstance" parent="Seats07"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, 0, -13.2505 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, -13.25 )
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="PeopleRight" type="MeshInstance" parent="Seats07"]
-transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 0, -4.76837e-07, 13.8621 )
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -0.27, 0, 13.862 )
 mesh = SubResource( 4 )
 material/0 = null
 
