@@ -85,3 +85,7 @@ func _ready():
 	# and load our starting scene
 	# load_world("res://scenes/tracks/track_01/track.tscn")
 	load_world("res://scenes/tracks/test/track.tscn")
+
+func _process(_delta : float):
+	if Input.is_action_just_pressed("open_settings"):
+		$Settings.popup_centered()
