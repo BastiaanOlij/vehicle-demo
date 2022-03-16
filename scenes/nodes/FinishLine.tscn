@@ -11,6 +11,7 @@ _data = {
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 1, 8, 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 2 )
@@ -31,14 +32,16 @@ size = Vector2( 14, 4 )
 curve = SubResource( 1 )
 
 [node name="CSGPolygon" type="CSGPolygon" parent="Path"]
-invert_faces = true
 polygon = PoolVector2Array( 1, 0, 0.707, 0.707, 0, 1, -0.707, 0.707, -1, 0, -0.707, -0.707, 0, -1, 0.707, -0.707 )
 mode = 2
 path_node = NodePath("..")
+path_interval_type = 0
 path_interval = 1.0
+path_simplify_angle = 0.0
 path_rotation = 2
 path_local = false
 path_continuous_u = true
+path_u_distance = 1.0
 path_joined = false
 smooth_faces = true
 material = SubResource( 2 )

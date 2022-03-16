@@ -134,7 +134,7 @@ extents = Vector3( 0.1, 1, 125 )
 
 [sub_resource type="Curve3D" id=15]
 _data = {
-"points": PoolVector3Array( 0.774384, 0, -16.0686, -0.774384, 0, 16.0686, 23.415, 0, -80.9133, 18.783, 0, -22.1374, -18.783, 0, 22.1374, 1.15241, 0, 1.72992, 37.2847, 0, -2.23611, -37.2847, 0, 2.23611, -78.5868, 0, 32.6135 ),
+"points": PoolVector3Array( 0.774384, 0, -16.0686, -0.774384, 0, 16.0686, 23.415, 0, -80.9133, 18.5328, -0.145565, -22.2428, -18.5328, 0.145565, 22.2428, 1.15241, 0, 1.72992, 37.2847, 0, -2.23611, -37.2847, 0, 2.23611, -78.5868, 0, 32.6135 ),
 "tilts": PoolRealArray( 0, 0, 0 )
 }
 
@@ -346,14 +346,16 @@ curve = SubResource( 3 )
 [node name="MainRoad" type="CSGPolygon" parent="Track/MainPath" index="0"]
 cast_shadow = 0
 use_collision = true
-invert_faces = true
 polygon = PoolVector2Array( -10, -1, -7, 0.05, 7, 0.05, 10, -1 )
 mode = 2
 path_node = NodePath("../../MainPath")
+path_interval_type = 0
 path_interval = 2.5
+path_simplify_angle = 5.0
 path_rotation = 2
 path_local = false
 path_continuous_u = true
+path_u_distance = 1.0
 path_joined = true
 material = ExtResource( 5 )
 
@@ -364,14 +366,16 @@ curve = SubResource( 4 )
 [node name="PitRoad" type="CSGPolygon" parent="Track/PitPath" index="0"]
 cast_shadow = 0
 use_collision = true
-invert_faces = true
 polygon = PoolVector2Array( 7, 0.05, 7, -1, -7, -1, -7, 0.05 )
 mode = 2
 path_node = NodePath("..")
+path_interval_type = 0
 path_interval = 2.5
+path_simplify_angle = 0.0
 path_rotation = 2
 path_local = false
 path_continuous_u = false
+path_u_distance = 1.0
 path_joined = false
 material = ExtResource( 5 )
 
@@ -382,47 +386,57 @@ invert_faces = true
 polygon = PoolVector2Array( -7.5, 0, -7.5, 2, -10, 2, -10, 0 )
 mode = 2
 path_node = NodePath("../MainPath")
+path_interval_type = 0
 path_interval = 1.0
+path_simplify_angle = 0.0
 path_rotation = 2
 path_local = false
 path_continuous_u = false
+path_u_distance = 1.0
 path_joined = true
 
 [node name="OuterFence" type="Spatial" parent="Track" index="3"]
 
 [node name="Wall" type="CSGPolygon" parent="Track/OuterFence" index="0"]
-invert_faces = true
 polygon = PoolVector2Array( -7.5, 0, -7.5, 0.5, -7.7, 0.5, -7.7, 0 )
 mode = 2
 path_node = NodePath("../../MainPath")
+path_interval_type = 0
 path_interval = 1.0
+path_simplify_angle = 0.0
 path_rotation = 2
 path_local = false
 path_continuous_u = true
+path_u_distance = 1.0
 path_joined = true
 material = ExtResource( 7 )
 
 [node name="Fence" type="CSGPolygon" parent="Track/OuterFence" index="1"]
-invert_faces = true
 polygon = PoolVector2Array( -7.59, 0.5, -7.59, 2, -7.61, 2, -7.61, 0.5 )
 mode = 2
 path_node = NodePath("../../MainPath")
+path_interval_type = 0
 path_interval = 1.0
+path_simplify_angle = 0.0
 path_rotation = 2
 path_local = false
 path_continuous_u = true
+path_u_distance = 1.0
 path_joined = true
 material = ExtResource( 6 )
 
 [node name="FenceTop" type="CSGPolygon" parent="Track/OuterFence" index="2"]
-invert_faces = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012, 0, -0.013 )
 polygon = PoolVector2Array( -7.6, 2.05, -7.55, 2, -7.6, 1.95, -7.65, 2 )
 mode = 2
 path_node = NodePath("../../MainPath")
+path_interval_type = 0
 path_interval = 1.0
+path_simplify_angle = 0.0
 path_rotation = 2
 path_local = false
 path_continuous_u = true
+path_u_distance = 1.0
 path_joined = true
 smooth_faces = true
 material = ExtResource( 9 )

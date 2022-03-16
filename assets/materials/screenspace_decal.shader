@@ -29,14 +29,14 @@ void fragment() {
 	
 	vec2 text_uv = UV + offs;
 	if (text_uv.x < min_uv.x) {
-		discard
+		discard;
 	} else if (text_uv.y < min_uv.y) {
-		discard
+		discard;
 	} else if (text_uv.x > max_uv.x) {
-		discard
+		discard;
 	} else if (text_uv.y > max_uv.y) {
-		discard
-	};
+		discard;
+	}
 	
 	vec4 color = texture(texture_albedo, text_uv);
 	ALBEDO = color.rgb;
