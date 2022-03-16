@@ -48,6 +48,10 @@ func _update():
 	if !is_dirty:
 		return
 	
+	# Fix start and end tilt
+	curve.set_point_tilt(0, deg2rad(90.0))
+	curve.set_point_tilt(curve.get_point_count() - 1, 0.0)
+	
 	# how long is our track?
 	var curve_length = curve.get_baked_length()
 	

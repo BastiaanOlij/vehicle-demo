@@ -39,7 +39,7 @@ void fragment() {
 shader = SubResource( 1 )
 shader_param/specular = 0.5
 shader_param/normal_scale = 1.0
-shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_scale = Vector3( 1, 8, 1 )
 shader_param/uv1_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = ExtResource( 4 )
 shader_param/texture_alpha = ExtResource( 5 )

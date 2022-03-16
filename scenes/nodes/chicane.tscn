@@ -11,13 +11,15 @@ curve = null
 
 [node name="CSGPolygon" type="CSGPolygon" parent="."]
 use_collision = true
-invert_faces = true
 polygon = PoolVector2Array( 0, 0.08, 2, 0.08, 2, -0.1, 0, -0.1 )
 mode = 2
 path_node = NodePath("..")
-path_interval = 5.0
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 5.0
 path_rotation = 2
-path_local = false
+path_local = true
 path_continuous_u = true
+path_u_distance = 1.0
 path_joined = false
 material = SubResource( 2 )
