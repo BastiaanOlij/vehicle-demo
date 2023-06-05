@@ -1,34 +1,87 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=28 format=3 uid="uid://rd8t7acjaxkn"]
 
-[ext_resource path="res://assets/turbosquid.com/caterham/caterham.gltf" type="PackedScene" id=1]
-[ext_resource path="res://scenes/cars/car.gd" type="Script" id=2]
-[ext_resource path="res://assets/fonts/pt_sans_24pt.tres" type="DynamicFont" id=3]
-[ext_resource path="res://assets/turbosquid.com/caterham/Dial.tscn" type="PackedScene" id=4]
+[ext_resource type="PackedScene" uid="uid://brtmqbtisy8xi" path="res://assets/turbosquid.com/caterham/caterham.gltf" id="1"]
+[ext_resource type="Script" path="res://scenes/cars/car.gd" id="2"]
+[ext_resource type="FontFile" path="res://assets/fonts/pt_sans_24pt.tres" id="3"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/black.material" id="3_002gu"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Car Paint.material" id="3_8e4pm"]
+[ext_resource type="PackedScene" uid="uid://w7uhgh5alk2r" path="res://assets/turbosquid.com/caterham/Dial.tscn" id="4"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/license plate.material" id="4_5s6k1"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Rear headlights reflect.material" id="4_i3a3k"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Carbon.material" id="5_4ay2j"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Rear hlights red.material" id="5_nv1pp"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Material #499.material" id="6_knyrn"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Rear hlights white.material" id="6_rjlmx"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Logo.material" id="7_axx3d"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/gas tunk.material" id="8_101qp"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Material #500.material" id="9_3vikx"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/glossy metall.material" id="14_ldbj5"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/glass.material" id="14_w35bh"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/#_001.material" id="15_jgfub"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Material #12.material" id="17_awnbc"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/#.material" id="18_enfrd"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Disk.material" id="19_ha1ed"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/tire.material" id="20_6e8b8"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Lamps.material" id="21_bvxbl"]
+[ext_resource type="Material" path="res://assets/turbosquid.com/caterham/Turning point orange.material" id="22_nwgip"]
 
-[sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 3.22098, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 3.22098, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 0.0727272 ), 0.0, 0.0, 0, 0, Vector2( 0.125899, 0.0818181 ), 0.0, 0.705286, 0, 0, Vector2( 0.931655, 1 ), 0.0, -1.50057, 0, 0, Vector2( 1, 0 ), -9.05604, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="2"]
+_data = [Vector2(0, 0.0727272), 0.0, 0.0, 0, 0, Vector2(0.125899, 0.0818181), 0.0, 0.705286, 0, 0, Vector2(0.931655, 1), 0.0, -1.50057, 0, 0, Vector2(1, 0), -9.05604, 0.0, 0, 0]
+point_count = 4
 
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.884512, 0.451341, 1.65455 )
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(0.884512, 0.451341, 3.36457)
 
-[node name="Car" instance=ExtResource( 1 )]
+[node name="Car" instance=ExtResource("1")]
 mass = 575.0
 can_sleep = false
-script = ExtResource( 2 )
-steer_curve = SubResource( 1 )
-power_curve = SubResource( 2 )
+script = ExtResource("2")
+steer_curve = SubResource("1")
+power_curve = SubResource("2")
+
+[node name="backlights" parent="." index="0"]
+surface_material_override/0 = ExtResource("3_002gu")
+surface_material_override/1 = ExtResource("4_i3a3k")
+surface_material_override/2 = ExtResource("5_nv1pp")
+surface_material_override/3 = ExtResource("6_rjlmx")
+
+[node name="body" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_8e4pm")
+surface_material_override/1 = ExtResource("4_5s6k1")
+surface_material_override/2 = ExtResource("5_4ay2j")
+surface_material_override/3 = ExtResource("6_knyrn")
+surface_material_override/4 = ExtResource("7_axx3d")
+surface_material_override/5 = ExtResource("8_101qp")
+surface_material_override/6 = ExtResource("9_3vikx")
+
+[node name="exhaust_tube" parent="." index="2"]
+surface_material_override/0 = ExtResource("14_ldbj5")
+surface_material_override/1 = ExtResource("15_jgfub")
+
+[node name="glass" parent="." index="3"]
+surface_material_override/0 = ExtResource("14_w35bh")
+
+[node name="interior" parent="." index="4"]
+surface_material_override/0 = ExtResource("14_ldbj5")
+surface_material_override/2 = ExtResource("5_4ay2j")
+surface_material_override/3 = ExtResource("3_8e4pm")
+surface_material_override/5 = ExtResource("3_002gu")
 
 [node name="steering" parent="interior" index="0"]
-transform = Transform( 1, -4.0663e-08, -1.07197e-07, 1.64974e-08, 0.976296, -0.21644, 1.13458e-07, 0.21644, 0.976296, -26.6765, 4.82215, 7.54762 )
+transform = Transform3D(1, -4.0663e-08, -1.07197e-07, 1.64974e-08, 0.976296, -0.21644, 1.13458e-07, 0.21644, 0.976296, -26.6765, 4.82215, 7.54762)
+surface_material_override/0 = ExtResource("5_4ay2j")
+surface_material_override/1 = ExtResource("3_8e4pm")
+surface_material_override/2 = ExtResource("3_002gu")
 
 [node name="Lamp" parent="." index="5"]
 visible = false
 
 [node name="left_front" parent="." index="6"]
-transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.65, 0.37, 1.275 )
+transform = Transform3D(1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.65, 0.37, 1.275)
 use_as_steering = true
 wheel_roll_influence = 0.5
 wheel_radius = 0.32
@@ -41,10 +94,15 @@ damping_compression = 0.8
 damping_relaxation = 0.9
 
 [node name="left_front" parent="left_front" index="0"]
-transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
+transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0)
+surface_material_override/0 = ExtResource("17_awnbc")
+surface_material_override/1 = ExtResource("18_enfrd")
+surface_material_override/2 = ExtResource("14_ldbj5")
+surface_material_override/3 = ExtResource("19_ha1ed")
+surface_material_override/4 = ExtResource("20_6e8b8")
 
 [node name="left_rear" parent="." index="7"]
-transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.935, 0.37, -1.255 )
+transform = Transform3D(1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.935, 0.37, -1.255)
 use_as_traction = true
 wheel_roll_influence = 0.5
 wheel_radius = 0.32
@@ -57,10 +115,15 @@ damping_compression = 0.7
 damping_relaxation = 0.8
 
 [node name="left_rear" parent="left_rear" index="0"]
-transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
+transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0)
+surface_material_override/0 = ExtResource("17_awnbc")
+surface_material_override/1 = ExtResource("18_enfrd")
+surface_material_override/2 = ExtResource("14_ldbj5")
+surface_material_override/3 = ExtResource("19_ha1ed")
+surface_material_override/4 = ExtResource("20_6e8b8")
 
 [node name="right_front" parent="." index="8"]
-transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.65, 0.37, 1.275 )
+transform = Transform3D(1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.65, 0.37, 1.275)
 use_as_steering = true
 wheel_roll_influence = 0.5
 wheel_radius = 0.32
@@ -73,10 +136,15 @@ damping_compression = 0.8
 damping_relaxation = 0.9
 
 [node name="right_front" parent="right_front" index="0"]
-transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
+transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0)
+surface_material_override/0 = ExtResource("17_awnbc")
+surface_material_override/1 = ExtResource("18_enfrd")
+surface_material_override/2 = ExtResource("14_ldbj5")
+surface_material_override/3 = ExtResource("19_ha1ed")
+surface_material_override/4 = ExtResource("20_6e8b8")
 
 [node name="right_rear" parent="." index="9"]
-transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.935, 0.37, -1.255 )
+transform = Transform3D(1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, -0.935, 0.37, -1.255)
 use_as_traction = true
 wheel_roll_influence = 0.5
 wheel_radius = 0.32
@@ -89,47 +157,61 @@ damping_compression = 0.7
 damping_relaxation = 0.8
 
 [node name="right_rear" parent="right_rear" index="0"]
-transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
+transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0)
+surface_material_override/0 = ExtResource("17_awnbc")
+surface_material_override/1 = ExtResource("18_enfrd")
+surface_material_override/2 = ExtResource("14_ldbj5")
+surface_material_override/3 = ExtResource("19_ha1ed")
+surface_material_override/4 = ExtResource("20_6e8b8")
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="11"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631, 0 )
-shape = SubResource( 3 )
+[node name="left_wing" parent="wings" index="0"]
+surface_material_override/0 = ExtResource("3_8e4pm")
+surface_material_override/1 = ExtResource("3_002gu")
+surface_material_override/2 = ExtResource("21_bvxbl")
+surface_material_override/3 = ExtResource("22_nwgip")
 
-[node name="brake_lights" type="Spatial" parent="." index="12"]
+[node name="right_wing" parent="wings" index="1"]
+surface_material_override/0 = ExtResource("3_8e4pm")
+surface_material_override/1 = ExtResource("3_002gu")
+surface_material_override/2 = ExtResource("21_bvxbl")
+surface_material_override/3 = ExtResource("22_nwgip")
 
-[node name="right_brake_light" type="OmniLight" parent="brake_lights" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 4.37114e-08, 0, -4.37114e-08, 1, -0.34591, 0.411791, -1.79736 )
-light_color = Color( 1, 0, 0, 1 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631, 0)
+shape = SubResource("3")
+
+[node name="brake_lights" type="Node3D" parent="." index="12"]
+
+[node name="right_brake_light" type="OmniLight3D" parent="brake_lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 4.37114e-08, 0, -4.37114e-08, 1, -0.34591, 0.411791, -1.79736)
+light_color = Color(1, 0, 0, 1)
 light_energy = 2.0
 omni_range = 0.1
 
-[node name="left_brake_light" type="OmniLight" parent="brake_lights" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 4.37114e-08, 0, -4.37114e-08, 1, 0.351679, 0.411791, -1.79736 )
-light_color = Color( 1, 0, 0, 1 )
+[node name="left_brake_light" type="OmniLight3D" parent="brake_lights" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 4.37114e-08, 0, -4.37114e-08, 1, 0.351679, 0.411791, -1.79736)
+light_color = Color(1, 0, 0, 1)
 light_energy = 2.0
 omni_range = 0.1
 
-[node name="reverse_lights" type="Spatial" parent="." index="13"]
+[node name="reverse_lights" type="Node3D" parent="." index="13"]
 
-[node name="left_reverse_light" type="OmniLight" parent="reverse_lights" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.748783, 0.551986, -1.66381 )
+[node name="left_reverse_light" type="OmniLight3D" parent="reverse_lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.748783, 0.551986, -1.66381)
 light_energy = 2.0
 omni_range = 0.1
 
-[node name="right_reverse_light" type="OmniLight" parent="reverse_lights" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749, 0.552, -1.664 )
+[node name="right_reverse_light" type="OmniLight3D" parent="reverse_lights" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749, 0.552, -1.664)
 light_energy = 2.0
 omni_range = 0.1
 
-[node name="RPMDial" parent="." index="14" instance=ExtResource( 4 )]
+[node name="RPMDial" parent="." index="14" instance=ExtResource("4")]
 
-[node name="Speedo" parent="." index="15" instance=ExtResource( 4 )]
-transform = Transform( 0.999929, -0.000697565, -0.0119349, 0, 0.998296, -0.0583481, 0.0119552, 0.0583439, 0.998225, -0.309808, 0.680574, -0.233943 )
+[node name="Speedo" parent="." index="15" instance=ExtResource("4")]
+transform = Transform3D(0.999929, -0.000697565, -0.0119349, 0, 0.998296, -0.0583481, 0.0119552, 0.0583439, 0.998225, -0.309808, 0.680574, -0.233943)
 
 [node name="Info" type="Label" parent="." index="16"]
-margin_right = 627.0
-margin_bottom = 130.0
-custom_fonts/font = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_right = 627.0
+offset_bottom = 130.0
+theme_override_fonts/font = ExtResource("3")

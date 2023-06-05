@@ -2,7 +2,7 @@ extends ColorRect
 
 signal finished_fading
 
-export var is_faded = false setget set_is_faded, get_is_faded
+@export var is_faded = false: get = get_is_faded, set = set_is_faded
 var is_ready = false
 
 func set_is_faded(new_value: bool):
@@ -30,5 +30,5 @@ func _ready():
 func get_is_faded():
 	return is_faded
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	emit_signal("finished_fading")

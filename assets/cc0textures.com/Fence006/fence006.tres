@@ -1,19 +1,19 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=2]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dg1psdgvcppdf"]
 
-[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Metalness.jpg" type="Texture" id=1]
-[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Normal.jpg" type="Texture" id=2]
-[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Roughness.jpg" type="Texture" id=3]
-[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Color.jpg" type="Texture" id=4]
-[ext_resource path="res://assets/cc0textures.com/Fence006/Fence006_1K_Opacity.jpg" type="Texture" id=5]
+[ext_resource type="Texture2D" uid="uid://b8b6qp6r547eq" path="res://assets/cc0textures.com/Fence006/Fence006_1K_Metalness.jpg" id="1"]
+[ext_resource type="Texture2D" uid="uid://cwpwrpu6aci6c" path="res://assets/cc0textures.com/Fence006/Fence006_1K_Normal.jpg" id="2"]
+[ext_resource type="Texture2D" uid="uid://bfsbmpplm1yiv" path="res://assets/cc0textures.com/Fence006/Fence006_1K_Roughness.jpg" id="3"]
+[ext_resource type="Texture2D" uid="uid://dhlmvhjidunmu" path="res://assets/cc0textures.com/Fence006/Fence006_1K_Color.jpg" id="4"]
+[ext_resource type="Texture2D" uid="uid://cjrp3716fb8mc" path="res://assets/cc0textures.com/Fence006/Fence006_1K_Opacity.jpg" id="5"]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id="1"]
 code = "shader_type spatial;
 
-uniform sampler2D texture_albedo : hint_albedo;
-uniform sampler2D texture_alpha : hint_white;
+uniform sampler2D texture_albedo : source_color;
+uniform sampler2D texture_alpha : hint_default_white;
 uniform float specular;
-uniform sampler2D texture_metallic : hint_white;
-uniform sampler2D texture_roughness : hint_white;
+uniform sampler2D texture_metallic : hint_default_white;
+uniform sampler2D texture_roughness : hint_default_white;
 uniform sampler2D texture_normal : hint_normal;
 uniform float normal_scale : hint_range(-16,16);
 uniform vec3 uv1_scale;
@@ -30,19 +30,20 @@ void fragment() {
 	METALLIC = texture(texture_metallic,base_uv).r;
 	ROUGHNESS = texture(texture_roughness,base_uv).r;
 	SPECULAR = specular;
-	NORMALMAP = texture(texture_normal,base_uv).rgb;
-	NORMALMAP_DEPTH = normal_scale;
+	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
 }
 "
 
 [resource]
-shader = SubResource( 1 )
-shader_param/specular = 0.5
-shader_param/normal_scale = 1.0
-shader_param/uv1_scale = Vector3( 1, 8, 1 )
-shader_param/uv1_offset = Vector3( 0, 0, 0 )
-shader_param/texture_albedo = ExtResource( 4 )
-shader_param/texture_alpha = ExtResource( 5 )
-shader_param/texture_metallic = ExtResource( 1 )
-shader_param/texture_roughness = ExtResource( 3 )
-shader_param/texture_normal = ExtResource( 2 )
+render_priority = 0
+shader = SubResource("1")
+shader_parameter/specular = 0.5
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(1, 8, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("4")
+shader_parameter/texture_alpha = ExtResource("5")
+shader_parameter/texture_metallic = ExtResource("1")
+shader_parameter/texture_roughness = ExtResource("3")
+shader_parameter/texture_normal = ExtResource("2")
