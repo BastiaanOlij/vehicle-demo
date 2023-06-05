@@ -1,39 +1,40 @@
-[gd_resource type="ShaderMaterial" load_steps=14 format=2]
+[gd_resource type="ShaderMaterial" load_steps=14 format=3 uid="uid://c0xtlnilegbjy"]
 
-[ext_resource path="res://assets/textures.com/RockGrassy0142_2/TexturesCom_RockGrassy0142_2_seamless_N.png" type="Texture" id=1]
-[ext_resource path="res://assets/textures.com/RockGrassy0142_2/TexturesCom_RockGrassy0142_2_seamless_S.jpg" type="Texture" id=2]
-[ext_resource path="res://assets/materials/terrain.shader" type="Shader" id=3]
-[ext_resource path="res://scenes/tracks/test/heightmap.png" type="Texture" id=4]
-[ext_resource path="res://scenes/tracks/test/splatmap.png" type="Texture" id=5]
-[ext_resource path="res://assets/cc0textures.com/Ground033/Ground033_1K_Color.jpg" type="Texture" id=6]
-[ext_resource path="res://assets/cc0textures.com/Ground033/Ground033_1K_Normal.jpg" type="Texture" id=7]
-[ext_resource path="res://assets/cc0textures.com/Ground041/Ground041_1K_Color.jpg" type="Texture" id=8]
-[ext_resource path="res://assets/cc0textures.com/Ground041/Ground041_1K_Normal.jpg" type="Texture" id=9]
-[ext_resource path="res://assets/cc0textures.com/Rocks022/Rocks022_1K_Normal.jpg" type="Texture" id=10]
-[ext_resource path="res://assets/cc0textures.com/Rocks022/Rocks022_1K_Color.jpg" type="Texture" id=11]
+[ext_resource type="Texture2D" uid="uid://cbne4rxg35on7" path="res://assets/textures.com/RockGrassy0142_2/TexturesCom_RockGrassy0142_2_seamless_N.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cxugttnx085rf" path="res://assets/textures.com/RockGrassy0142_2/TexturesCom_RockGrassy0142_2_seamless_S.jpg" id="2"]
+[ext_resource type="Shader" path="res://assets/materials/terrain.gdshader" id="3"]
+[ext_resource type="Texture2D" uid="uid://eppswbhglq4e" path="res://scenes/tracks/test/heightmap.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cc7c4ur400c08" path="res://scenes/tracks/test/splatmap.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c2mytxl3q0quy" path="res://assets/cc0textures.com/Ground033/Ground033_1K_Color.jpg" id="6"]
+[ext_resource type="Texture2D" uid="uid://cjfyafwm8f2x3" path="res://assets/cc0textures.com/Ground033/Ground033_1K_Normal.jpg" id="7"]
+[ext_resource type="Texture2D" uid="uid://2hthulrer5yh" path="res://assets/cc0textures.com/Ground041/Ground041_1K_Color.jpg" id="8"]
+[ext_resource type="Texture2D" uid="uid://ba1vhyu0khpu5" path="res://assets/cc0textures.com/Ground041/Ground041_1K_Normal.jpg" id="9"]
+[ext_resource type="Texture2D" uid="uid://p13rd1hjrwg7" path="res://assets/cc0textures.com/Rocks022/Rocks022_1K_Normal.jpg" id="10"]
+[ext_resource type="Texture2D" uid="uid://cubqmr5e2v8yg" path="res://assets/cc0textures.com/Rocks022/Rocks022_1K_Color.jpg" id="11"]
 
-[sub_resource type="OpenSimplexNoise" id=1]
+[sub_resource type="FastNoiseLite" id="1"]
 
-[sub_resource type="NoiseTexture" id=2]
+[sub_resource type="NoiseTexture2D" id="2"]
 seamless = true
-noise = SubResource( 1 )
+noise = SubResource("1")
 
 [resource]
-shader = ExtResource( 3 )
-shader_param/height_scale = 25.0
-shader_param/height_uv_offset = Vector2( -0.5, -0.5 )
-shader_param/height_uv_size = Vector2( 2048, 2048 )
-shader_param/normal_depth = 1.0
-shader_param/terrain_scale = Vector2( 0.2, 0.2 )
-shader_param/noise_scale = Vector2( 0.01, 0.01 )
-shader_param/heightmap = ExtResource( 4 )
-shader_param/splatmap = ExtResource( 5 )
-shader_param/terrain_texture = ExtResource( 2 )
-shader_param/terrain_normalmap = ExtResource( 1 )
-shader_param/texture1 = ExtResource( 6 )
-shader_param/normalmap1 = ExtResource( 7 )
-shader_param/texture2 = ExtResource( 11 )
-shader_param/normalmap2 = ExtResource( 10 )
-shader_param/texture3 = ExtResource( 8 )
-shader_param/normalmap3 = ExtResource( 9 )
-shader_param/noise = SubResource( 2 )
+render_priority = 0
+shader = ExtResource("3")
+shader_parameter/height_scale = 25.0
+shader_parameter/height_uv_offset = Vector2(-0.5, -0.5)
+shader_parameter/height_uv_size = Vector2(2048, 2048)
+shader_parameter/normal_depth = 1.0
+shader_parameter/terrain_scale = Vector2(0.2, 0.2)
+shader_parameter/noise_scale = Vector2(0.01, 0.01)
+shader_parameter/heightmap = ExtResource("4")
+shader_parameter/splatmap = ExtResource("5")
+shader_parameter/terrain_texture = ExtResource("2")
+shader_parameter/terrain_normalmap = ExtResource("1")
+shader_parameter/texture1 = ExtResource("6")
+shader_parameter/normalmap1 = ExtResource("7")
+shader_parameter/texture2 = ExtResource("11")
+shader_parameter/normalmap2 = ExtResource("10")
+shader_parameter/texture3 = ExtResource("8")
+shader_parameter/normalmap3 = ExtResource("9")
+shader_parameter/noise = SubResource("2")

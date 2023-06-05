@@ -1,50 +1,46 @@
-tool
-extends MultiMeshInstance
+@tool
+extends MultiMeshInstance3D
 
 class_name MultiAlongPath
 
-export (NodePath) var path = null setget set_path
-export (Vector2) var shift = Vector2(0.0, 0.0) setget set_shift
-var path_node : Path = null
+@export var path : Path3D : set = set_path
+@export var shift : Vector2 = Vector2(0.0, 0.0): set = set_shift_pressed
 
-func set_path(new_path: NodePath):
-	if path_node:
-		path_node.disconnect("curve_changed", self, "_update_instances")
+func set_path(new_path: Path3D):
+	if path:
+		path.disconnect("curve_changed", Callable(self, "_update_instances"))
 	
 	path = new_path
-	path_node = null
 	if path and is_inside_tree():
-		path_node = get_node(path)
-		if path_node:
-			path_node.connect("curve_changed", self, "_update_instances")
+		path.connect("curve_changed", Callable(self, "_update_instances"))
 
-func set_shift(new_shift : Vector2):
+func set_shift_pressed(new_shift : Vector2):
 	shift = new_shift
-	if path_node and is_inside_tree():
+	if path and is_inside_tree():
 		_update_instances()
 
 func _update_instances():
 	if !multimesh:
 		return
-	if !path_node:
+	if !path:
 		return
-	if !path_node.curve:
+	if !path.curve:
 		return
 		
-	var curve : Curve3D = path_node.curve
+	var curve : Curve3D = path.curve
 	var total_length = curve.get_baked_length()
 	var spacing = total_length / multimesh.instance_count
 	
-	var offset_t : Transform = path_node.global_transform * global_transform.inverse()
+	var offset_t : Transform3D = path.global_transform * global_transform.inverse()
 	
 	var offset = 0.0
-	var pos = curve.interpolate_baked(offset)
+	var pos = curve.sample_baked(offset)
 	for i in range(0, multimesh.instance_count):
-		var next_pos = curve.interpolate_baked(fmod(offset + 2.0, total_length))
-		var up = curve.interpolate_baked_up_vector(offset)
+		var next_pos = curve.sample_baked(fmod(offset + 2.0, total_length))
+		var up = curve.sample_baked_up_vector(offset)
 		
 		var forward = (next_pos - pos).normalized()
-		var t : Transform
+		var t : Transform3D
 		
 		t = t.looking_at(forward, up)
 		t.origin = pos + (up * shift.y) + (t.basis.x * shift.x)
@@ -59,4 +55,5 @@ func _update_instances():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_path(path)
+	if path and is_inside_tree():
+		path.connect("curve_changed", Callable(self, "_update_instances"))
