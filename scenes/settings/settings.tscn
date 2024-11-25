@@ -1,287 +1,186 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://epiepvqbaohp"]
 
-[ext_resource path="res://scenes/settings/settings.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/pt_sans_24pt.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/fonts/pt_sans_16pt.tres" type="DynamicFont" id=3]
+[ext_resource type="Script" path="res://scenes/settings/settings.gd" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/pt_sans_24pt.tres" id="2"]
+[ext_resource type="FontFile" path="res://assets/fonts/pt_sans_16pt.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://cl5tib1bkrtpc" path="res://scenes/settings/settings_map_dialog.tscn" id="4_6ibf8"]
 
-[node name="Settings" type="PopupDialog"]
-pause_mode = 2
+[node name="Settings" type="Popup"]
+process_mode = 2
+title = "Input mapping"
+size = Vector2i(601, 285)
 visible = true
-margin_right = 600.0
-margin_bottom = 400.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+borderless = false
+script = ExtResource("1")
 
-[node name="ClosePopup" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -33.5
-margin_top = -53.0
-margin_right = 33.5
-margin_bottom = -15.0
-custom_fonts/font = ExtResource( 2 )
-text = "Close"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 580.0
-margin_bottom = 312.0
-custom_constants/separation = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 989.0
-margin_bottom = 32.0
+[node name="Header" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="Input" type="Label" parent="VBoxContainer/Header"]
-margin_right = 75.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 75, 0 )
-custom_fonts/font = ExtResource( 2 )
+[node name="Input" type="Label" parent="MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
 text = "Input"
-align = 1
 
-[node name="Mapped" type="Label" parent="VBoxContainer/Header"]
-margin_left = 79.0
-margin_right = 304.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 225, 0 )
-custom_fonts/font = ExtResource( 2 )
+[node name="Mapped" type="Label" parent="MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
 text = "Mapped"
-align = 1
 
-[node name="Range" type="Label" parent="VBoxContainer/Header"]
-margin_left = 308.0
-margin_right = 509.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 201, 0 )
-custom_fonts/font = ExtResource( 2 )
+[node name="Range" type="Label" parent="MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(201, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
 text = "Range"
-align = 1
 
-[node name="Steering" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 37.0
-margin_right = 989.0
-margin_bottom = 65.0
+[node name="Steering" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="Name" type="Label" parent="VBoxContainer/Steering"]
-margin_top = 3.0
-margin_right = 75.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 75, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Steering"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Steering"
 
-[node name="Mapped" type="Label" parent="VBoxContainer/Steering"]
-margin_left = 79.0
-margin_top = 3.0
-margin_right = 509.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 430, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Mapped" type="Label" parent="MarginContainer/VBoxContainer/Steering"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Device X: Axis: Y"
 
-[node name="Map" type="Button" parent="VBoxContainer/Steering"]
-margin_left = 513.0
-margin_right = 555.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+[node name="Map" type="Button" parent="MarginContainer/VBoxContainer/Steering"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Map"
 
-[node name="Throttle" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 70.0
-margin_right = 989.0
-margin_bottom = 100.0
+[node name="Throttle" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="Name" type="Label" parent="VBoxContainer/Throttle"]
-margin_top = 4.0
-margin_right = 75.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 75, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Throttle"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Throttle"
 
-[node name="Mapped" type="Label" parent="VBoxContainer/Throttle"]
-margin_left = 79.0
-margin_top = 4.0
-margin_right = 304.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 225, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Mapped" type="Label" parent="MarginContainer/VBoxContainer/Throttle"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Device X: Axis: Y"
 
-[node name="Mode" type="OptionButton" parent="VBoxContainer/Throttle"]
-margin_left = 308.0
-margin_right = 434.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 126, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Mode" type="OptionButton" parent="MarginContainer/VBoxContainer/Throttle"]
+custom_minimum_size = Vector2(126, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 
-[node name="Invert" type="CheckBox" parent="VBoxContainer/Throttle"]
-margin_left = 438.0
-margin_right = 509.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 71, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Invert" type="CheckBox" parent="MarginContainer/VBoxContainer/Throttle"]
+custom_minimum_size = Vector2(71, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Invert"
 
-[node name="Map" type="Button" parent="VBoxContainer/Throttle"]
-margin_left = 513.0
-margin_right = 555.0
-margin_bottom = 30.0
-custom_fonts/font = ExtResource( 3 )
+[node name="Map" type="Button" parent="MarginContainer/VBoxContainer/Throttle"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Map"
 
-[node name="Brake" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 105.0
-margin_right = 989.0
-margin_bottom = 135.0
+[node name="Brake" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="Name" type="Label" parent="VBoxContainer/Brake"]
-margin_top = 4.0
-margin_right = 75.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 75, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Brake"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Brake	"
 
-[node name="Mapped" type="Label" parent="VBoxContainer/Brake"]
-margin_left = 79.0
-margin_top = 4.0
-margin_right = 304.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 225, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Mapped" type="Label" parent="MarginContainer/VBoxContainer/Brake"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Device X: Axis: Y"
 
-[node name="Mode" type="OptionButton" parent="VBoxContainer/Brake"]
-margin_left = 308.0
-margin_right = 434.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 126, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Mode" type="OptionButton" parent="MarginContainer/VBoxContainer/Brake"]
+custom_minimum_size = Vector2(126, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 
-[node name="Invert" type="CheckBox" parent="VBoxContainer/Brake"]
-margin_left = 438.0
-margin_right = 509.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 71, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Invert" type="CheckBox" parent="MarginContainer/VBoxContainer/Brake"]
+custom_minimum_size = Vector2(71, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Invert"
 
-[node name="Map" type="Button" parent="VBoxContainer/Brake"]
-margin_left = 513.0
-margin_right = 555.0
-margin_bottom = 30.0
-custom_fonts/font = ExtResource( 3 )
+[node name="Map" type="Button" parent="MarginContainer/VBoxContainer/Brake"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Map"
 
-[node name="GearUp" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 140.0
-margin_right = 989.0
-margin_bottom = 168.0
+[node name="GearUp" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="Name" type="Label" parent="VBoxContainer/GearUp"]
-margin_top = 3.0
-margin_right = 75.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 75, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/GearUp"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Gear up"
 
-[node name="Mapped" type="Label" parent="VBoxContainer/GearUp"]
-margin_left = 79.0
-margin_top = 3.0
-margin_right = 509.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 430, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Mapped" type="Label" parent="MarginContainer/VBoxContainer/GearUp"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Device X: Button: Y"
 
-[node name="Map" type="Button" parent="VBoxContainer/GearUp"]
-margin_left = 513.0
-margin_right = 555.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+[node name="Map" type="Button" parent="MarginContainer/VBoxContainer/GearUp"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Map"
 
-[node name="GearDown" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 173.0
-margin_right = 989.0
-margin_bottom = 201.0
+[node name="GearDown" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="Name" type="Label" parent="VBoxContainer/GearDown"]
-margin_top = 3.0
-margin_right = 75.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 75, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/GearDown"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Gear down"
 
-[node name="Mapped" type="Label" parent="VBoxContainer/GearDown"]
-margin_left = 79.0
-margin_top = 3.0
-margin_right = 509.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 430, 0 )
-custom_fonts/font = ExtResource( 3 )
+[node name="Mapped" type="Label" parent="MarginContainer/VBoxContainer/GearDown"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Device X: Button: Y"
 
-[node name="Map" type="Button" parent="VBoxContainer/GearDown"]
-margin_left = 513.0
-margin_right = 555.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+[node name="Map" type="Button" parent="MarginContainer/VBoxContainer/GearDown"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Map"
 
-[node name="MapDialog" type="PopupDialog" parent="."]
-visible = true
-margin_left = 679.0
-margin_top = 10.0
-margin_right = 1055.0
-margin_bottom = 108.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MapDialog" parent="." instance=ExtResource("4_6ibf8")]
+visible = false
 
-[node name="Label" type="Label" parent="MapDialog"]
-margin_left = 30.0
-margin_top = 9.0
-margin_right = 351.0
-margin_bottom = 42.0
-custom_fonts/font = ExtResource( 2 )
-text = "Perform your input to map"
-align = 1
-valign = 1
-
-[node name="CancelMap" type="Button" parent="MapDialog"]
-margin_left = 141.0
-margin_top = 50.0
-margin_right = 220.0
-margin_bottom = 88.0
-custom_fonts/font = ExtResource( 2 )
-text = "Cancel"
-
-[connection signal="about_to_show" from="." to="." method="_on_Settings_about_to_show"]
+[connection signal="about_to_popup" from="." to="." method="_on_Settings_about_to_show"]
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="popup_hide" from="." to="." method="_on_Settings_popup_hide"]
-[connection signal="pressed" from="ClosePopup" to="." method="_on_ClosePopup_pressed"]
-[connection signal="pressed" from="VBoxContainer/Steering/Map" to="." method="_on_Steering_Map_pressed"]
-[connection signal="item_selected" from="VBoxContainer/Throttle/Mode" to="." method="_on_Throttle_Mode_item_selected"]
-[connection signal="pressed" from="VBoxContainer/Throttle/Invert" to="." method="_on_Throttle_Invert_pressed"]
-[connection signal="pressed" from="VBoxContainer/Throttle/Map" to="." method="_on_Throttle_Map_pressed"]
-[connection signal="item_selected" from="VBoxContainer/Brake/Mode" to="." method="_on_Brake_Mode_item_selected"]
-[connection signal="pressed" from="VBoxContainer/Brake/Invert" to="." method="_on_Brake_Invert_pressed"]
-[connection signal="pressed" from="VBoxContainer/Brake/Map" to="." method="_on_Brake_Map_pressed"]
-[connection signal="pressed" from="VBoxContainer/GearUp/Map" to="." method="_on_GearUp_Map_pressed"]
-[connection signal="pressed" from="VBoxContainer/GearDown/Map" to="." method="_on_GearDown_Map_pressed"]
-[connection signal="pressed" from="MapDialog/CancelMap" to="." method="_on_CancelMap_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Steering/Map" to="." method="_on_Steering_Map_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Throttle/Mode" to="." method="_on_Throttle_Mode_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Throttle/Invert" to="." method="_on_Throttle_Invert_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Throttle/Map" to="." method="_on_Throttle_Map_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Brake/Mode" to="." method="_on_Brake_Mode_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Brake/Invert" to="." method="_on_Brake_Invert_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Brake/Map" to="." method="_on_Brake_Map_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GearUp/Map" to="." method="_on_GearUp_Map_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GearDown/Map" to="." method="_on_GearDown_Map_pressed"]
+[connection signal="mapping_changed" from="MapDialog" to="." method="_on_map_dialog_mapping_changed"]

@@ -1,34 +1,35 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/heightmap.png-c767c3d31340cffabbac4c6bf40a4a3f.stex"
+type="CompressedTexture2D"
+uid="uid://eppswbhglq4e"
+path.s3tc="res://.godot/imported/heightmap.png-c767c3d31340cffabbac4c6bf40a4a3f.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/tracks/test/heightmap.png"
-dest_files=[ "res://.import/heightmap.png-c767c3d31340cffabbac4c6bf40a4a3f.stex" ]
+dest_files=["res://.godot/imported/heightmap.png-c767c3d31340cffabbac4c6bf40a4a3f.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
+compress/hdr_compression=1
 compress/normal_map=2
-flags/repeat=true
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
-stream=false
-size_limit=0
-detect_3d=false
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

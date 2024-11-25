@@ -11,12 +11,12 @@ height = 100.0
 [node name="construct-vr" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="ARVROrigin" type="ARVROrigin" parent="Player" index="0"]
+[node name="XROrigin3D" type="XROrigin3D" parent="Player" index="0"]
 
-[node name="ARVRCamera" type="ARVRCamera" parent="Player/ARVROrigin" index="0"]
+[node name="XRCamera3D" type="XRCamera3D" parent="Player/XROrigin3D" index="0"]
 far = 4096.0
 
-[node name="MsgSphere" type="MeshInstance" parent="Player/ARVROrigin" index="1"]
+[node name="MsgSphere" type="MeshInstance3D" parent="Player/XROrigin3D" index="1"]
 visible = false
 mesh = SubResource( 1 )
 material/0 = ExtResource( 3 )

@@ -5,8 +5,8 @@
 
 
 
-[node name="Camera" type="Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38516, 3.59774 )
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38516, 3.59774 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null

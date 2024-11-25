@@ -6,27 +6,27 @@ enum AXIS_MODE {
 	MINUS_ONE_TO_ONE
 }
 
-export (float) var deadzone = 0.01
+@export var deadzone : float = 0.01
 
-export (int) var steering_device = 0
-export (int) var steering_axis = 0
+@export var steering_device : int = 0
+@export var steering_axis : int = 0
 
-export (int) var throttle_device = 0
-export (int) var throttle_axis = 3 # 7
-export (AXIS_MODE) var throttle_mode = AXIS_MODE.ZERO_TO_MINUS_ONE
-export (bool) var throttle_inverse = false
+@export var throttle_device : int = 0
+@export var throttle_axis : int = 3 # 7
+@export var throttle_mode : AXIS_MODE = AXIS_MODE.ZERO_TO_MINUS_ONE
+@export var throttle_inverse : bool = false
 
-export (int) var brake_device = 0
-export (int) var brake_axis = 3 # 6
-export (AXIS_MODE) var brake_mode = AXIS_MODE.ZERO_TO_ONE
-export (bool) var brake_inverse = false
+@export var brake_device : int = 0
+@export var brake_axis : int = 3 # 6
+@export var brake_mode : AXIS_MODE = AXIS_MODE.ZERO_TO_ONE
+@export var brake_inverse : bool = false
 
-export (int) var gear_up_device = 0
-export (int) var gear_up_button = 5
+@export var gear_up_device : int = 0
+@export var gear_up_button : int = 5
 var was_gear_up = false
 
-export (int) var gear_down_device = 0
-export (int) var gear_down_button = 4
+@export var gear_down_device : int = 0
+@export var gear_down_button : int = 4
 var was_gear_down = false
 
 func _ready():
@@ -83,12 +83,14 @@ func get_shift_up() -> bool:
 	return false
 
 func load_input_map(filename = "user://inputmap.json"):
-	var load_file = File.new()
-	if load_file.open(filename, File.READ) == OK:
+	var load_file = FileAccess.open(filename, FileAccess.READ)
+	if load_file:
 		var as_text = load_file.get_as_text()
 		load_file.close()
 		
-		var data = parse_json(as_text)
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(as_text)
+		var data = test_json_conv.get_data()
 		if data.has("Steering"):
 			steering_device = data.Steering.device
 			steering_axis = data.Steering.axis
@@ -137,9 +139,9 @@ func save_input_map(filename = "user://inputmap.json"):
 		}
 	}
 	
-	var save_file = File.new()
-	if save_file.open(filename, File.WRITE) == OK:
-		var as_json = to_json(data)
+	var save_file = FileAccess.open(filename, FileAccess.WRITE)
+	if save_file:
+		var as_json = JSON.stringify(data)
 		
 		save_file.store_line(as_json)
 		save_file.close()

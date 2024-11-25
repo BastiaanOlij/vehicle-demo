@@ -7,3 +7,4 @@
 *.materials eol=lf
 *.gltf eol=lf
 *.shader eol=lf
+*.gdshader eol=lf

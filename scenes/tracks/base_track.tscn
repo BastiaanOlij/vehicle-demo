@@ -1,16 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://wihpoa4501tl"]
 
-[sub_resource type="PlaneShape" id=1]
+[ext_resource type="Script" path="res://scenes/tracks/base_track.gd" id="1_861e6"]
 
-[node name="base_track" type="Spatial"]
+[sub_resource type="WorldBoundaryShape3D" id="1"]
 
-[node name="ground" type="StaticBody" parent="."]
+[node name="base_track" type="Node3D"]
+script = ExtResource("1_861e6")
 
-[node name="shape" type="CollisionShape" parent="ground"]
-shape = SubResource( 1 )
+[node name="ground" type="StaticBody3D" parent="."]
 
-[node name="sun" type="DirectionalLight" parent="."]
-transform = Transform( 0.756904, 0.274123, -0.593257, 0, 0.907777, 0.419452, 0.653526, -0.317485, 0.6871, 0, 10, 0 )
+[node name="shape" type="CollisionShape3D" parent="ground"]
+shape = SubResource("1")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.756904, 0.274123, -0.593257, 0, 0.907777, 0.419452, 0.653526, -0.317485, 0.6871, 0, 10, 0)
 shadow_enabled = true
 shadow_bias = 0.01
 directional_shadow_split_1 = 0.01

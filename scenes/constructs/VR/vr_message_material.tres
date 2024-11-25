@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
-[ext_resource path="res://scenes/constructs/VR/vr_message.shader" type="Shader" id=1]
-[ext_resource path="res://scenes/constructs/VR/press_b.png" type="Texture" id=2]
+[ext_resource path="res://scenes/constructs/VR/vr_message.gdshader" type="Shader" id=1]
+[ext_resource path="res://scenes/constructs/VR/press_b.png" type="Texture2D" id=2]
 
 [resource]
 shader = ExtResource( 1 )
